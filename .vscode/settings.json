@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "QuackHacks.sln"
+    "dotnet.defaultSolution": "QuackHacks2025.sln"
 }
