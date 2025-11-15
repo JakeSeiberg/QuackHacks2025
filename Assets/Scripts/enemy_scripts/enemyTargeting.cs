@@ -16,16 +16,7 @@ public class enemyTargeting : MonoBehaviour
         Vector3 direction = player.transform.position - transform.position;
         rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * bulletspeed;
         float rot = Mathf.Atan2(-direction.y,-direction.x) * Mathf.Rad2Deg;
-        transform.rotation= Quaternion.Euler(0,0,rot+90);
-        Destroy(GameObject, lifetime);        
-    }
-    void OnTriggerEnter2D(Collider2D other){
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("Hit Player!");
-        }
-
-        Destroy(gameObject);
+        transform.rotation= Quaternion.Euler(0,0,rot+90);      
     }
         
 }
