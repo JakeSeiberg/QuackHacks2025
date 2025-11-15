@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private float ghostSpawnTimer;
     private SpriteRenderer spriteRenderer;
     private Collider2D playerCollider;
+
+    public weapon playerWeapon;
     
     void Start()
     {
@@ -41,6 +43,11 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
+        if (Input.GetButtonDown("Fire1"))
+        {
+        playerWeapon.Fire();
+        }
+
         if (dashCooldownRemaining > 0)
         {
             dashCooldownRemaining -= Time.deltaTime;
