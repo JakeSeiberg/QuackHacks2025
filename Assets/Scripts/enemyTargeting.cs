@@ -1,20 +1,21 @@
 using UnityEngine;
+using Unity;
 
 public class enemyTargeting : MonoBehaviour
 {
     private GameObject player;
-    private RigidBody2D rb;
+    private Rigidbody2D rb;
     public float bulletspeed;
     public float lifetime; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb = GetComponent<RigidBody2D>();
+        rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
 
-        Vector3 direction = player.transform.position - tranform.position;
-        rb.linearvelo = new Vector2(direction.x, direction.y).normalized * bulletspeed;
-        float rot = Mathf.Atan2(-directory.y,-direction.x) * Mathf.Rad2Deg;
+        Vector3 direction = player.transform.position - transform.position;
+        rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * bulletspeed;
+        float rot = Mathf.Atan2(-direction.y,-direction.x) * Mathf.Rad2Deg;
         transform.rotation= Quaternion.Euler(0,0,rot+90);
         Destroy(GameObject, lifetime);        
     }
@@ -24,7 +25,7 @@ public class enemyTargeting : MonoBehaviour
             Debug.Log("Hit Player!");
         }
 
-        Destory(gameObject);
+        Destroy(gameObject);
     }
         
 }
