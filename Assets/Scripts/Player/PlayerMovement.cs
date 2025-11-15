@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 dashDirection;
     private float ghostSpawnTimer;
     private SpriteRenderer spriteRenderer;
+    private Collider2D playerCollider;
     
     void Start()
     {
@@ -29,6 +30,12 @@ public class PlayerMovement : MonoBehaviour
         if (spriteRenderer == null)
         {
             Debug.LogWarning("PlayerMovement: No SpriteRenderer found! Ghost effect requires a SpriteRenderer.");
+        }
+        
+        playerCollider = GetComponent<Collider2D>();
+        if (playerCollider == null)
+        {
+            Debug.LogWarning("PlayerMovement: No Collider2D found! Collision toggling requires a Collider2D.");
         }
     }
     
@@ -47,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
         {
             HandleMovement();
             
-            // Check for dash input
             if (Input.GetKeyDown(KeyCode.Space) && dashCooldownRemaining <= 0)
             {
                 StartDash();
@@ -92,10 +98,10 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             inputDir.y = -1;
         
-       
+
         if (inputDir == Vector2.zero)
         {
-            inputDir = Vector2.right; //Default direction: Can change later
+            inputDir = Vector2.right; // Default dash direction, can change in future
         }
         
         dashDirection = inputDir.normalized;
@@ -105,6 +111,10 @@ public class PlayerMovement : MonoBehaviour
         dashCooldownRemaining = dashCooldown;
         ghostSpawnTimer = 0;
         
+        if (playerCollider != null)
+        {
+            playerCollider.enabled = false;
+        }
     }
     
     void HandleDash()
@@ -112,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
         dashTimeRemaining -= Time.deltaTime;
         ghostSpawnTimer -= Time.deltaTime;
         
+        // Spawn ghost effect
         if (ghostSpawnTimer <= 0)
         {
             SpawnDashGhost();
@@ -121,10 +132,13 @@ public class PlayerMovement : MonoBehaviour
         if (dashTimeRemaining <= 0)
         {
             isDashing = false;
+            if (playerCollider != null)
+            {
+                playerCollider.enabled = true;
+            }
             return;
         }
         
-        // Move in dash direction
         Vector3 dashMovement = dashDirection * dashSpeed * Time.deltaTime;
         transform.position += dashMovement;
     }
@@ -142,7 +156,7 @@ public class PlayerMovement : MonoBehaviour
         ghostSprite.sprite = spriteRenderer.sprite;
         ghostSprite.color = ghostColor;
         ghostSprite.sortingLayerName = spriteRenderer.sortingLayerName;
-        ghostSprite.sortingOrder = spriteRenderer.sortingOrder - 1;
+        ghostSprite.sortingOrder = spriteRenderer.sortingOrder;
         
         StartCoroutine(FadeGhost(ghostSprite, ghost));
     }
@@ -163,15 +177,4 @@ public class PlayerMovement : MonoBehaviour
         Destroy(ghost);
     }
     
-    void OnGUI()
-    {
-        if (dashCooldownRemaining > 0)
-        {
-            GUI.Label(new Rect(10, 10, 200, 20), $"Dash Cooldown: {dashCooldownRemaining:F1}s");
-        }
-        else
-        {
-            GUI.Label(new Rect(10, 10, 200, 20), "Dash Ready!");
-        }
-    }
 }
