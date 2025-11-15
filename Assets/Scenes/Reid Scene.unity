@@ -164,6 +164,54 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!1 &598229047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 598229049}
+  - component: {fileID: 598229048}
+  m_Layer: 0
+  m_Name: MapGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &598229048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598229047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e05f13ba907f46be81c3bad0ec0339a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cellPrefab: {fileID: 3981818999615959195, guid: 7a469c28688da49328fdc534d171040d, type: 3}
+  item: {fileID: 21300000, guid: 26648ca6c98704ba5a8ae52ea710c990, type: 3}
+  shop: {fileID: 21300000, guid: afd5b43b87c134ac19f5f3acea0b882e, type: 3}
+  boss: {fileID: 21300000, guid: 68ba3074974e641be855bd0df16becf4, type: 3}
+--- !u!4 &598229049
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598229047}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.0121821165, y: 0.38289303, z: -0.05318363}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &841302073
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +420,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  dashSpeed: 20
+  dashDuration: 0.2
+  dashCooldown: 1
+  ghostSpawnInterval: 0.05
+  ghostFadeDuration: 0.5
+  ghostColor: {r: 1, g: 1, b: 1, a: 0.5}
 --- !u!1 &1118418355
 GameObject:
   m_ObjectHideFlags: 0
@@ -2301,7 +2355,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2326,7 +2380,7 @@ Transform:
   m_GameObject: {fileID: 2052316779}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.90328085, y: -1.0814042, z: -9.95655}
+  m_LocalPosition: {x: 2.5, y: -2, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3010,3 +3064,4 @@ SceneRoots:
   - {fileID: 1973677097}
   - {fileID: 1538193305}
   - {fileID: 841302074}
+  - {fileID: 598229049}

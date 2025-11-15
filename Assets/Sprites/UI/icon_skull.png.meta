@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: ddb6c2ea3a8194bd2a64b5413d44a2b4
+guid: 68ba3074974e641be855bd0df16becf4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6562127342811796341
-    second: Cowboy4_jump shoot_1_0
-  - first:
-      213: -6652710213610992058
-    second: Cowboy4_jump shoot_1_1
+      213: 6848405739004670407
+    second: icon_skull_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -49,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cowboy4_jump shoot_1_0
+      name: icon_skull_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 36
-        height: 39
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 573dc27fc0c511b50800000000000000
-      internalID: 6562127342811796341
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cowboy4_jump shoot_1_1
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 10
-        width: 8
-        height: 13
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 64e8a1cee43dca3a0800000000000000
-      internalID: -6652710213610992058
+      spriteID: 7c1be173cbc6a0f50800000000000000
+      internalID: 6848405739004670407
       vertices: []
       indices: 
       edges: []
@@ -163,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cowboy4_jump shoot_1_0: 6562127342811796341
-      Cowboy4_jump shoot_1_1: -6652710213610992058
+      icon_skull_0: 6848405739004670407
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

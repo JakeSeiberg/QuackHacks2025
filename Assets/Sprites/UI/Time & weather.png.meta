@@ -1,13 +1,25 @@
 fileFormatVersion: 2
-guid: ddb6c2ea3a8194bd2a64b5413d44a2b4
+guid: 629d1b7987c214b13920bf4f8000ae54
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6562127342811796341
-    second: Cowboy4_jump shoot_1_0
+      213: 1424618829465984313
+    second: Time & weather_0
   - first:
-      213: -6652710213610992058
-    second: Cowboy4_jump shoot_1_1
+      213: 5842763577583815578
+    second: Time & weather_1
+  - first:
+      213: -5195500187139546994
+    second: Time & weather_2
+  - first:
+      213: 5104677172394890368
+    second: Time & weather_3
+  - first:
+      213: -4663780142773140147
+    second: Time & weather_4
+  - first:
+      213: 1987090121973398385
+    second: Time & weather_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +52,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -116,45 +128,133 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cowboy4_jump shoot_1_0
+      name: Time & weather_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 36
-        height: 39
+        x: 149
+        y: 320
+        width: 33
+        height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 573dc27fc0c511b50800000000000000
-      internalID: 6562127342811796341
+      spriteID: 93d17a6074345c310800000000000000
+      internalID: 1424618829465984313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cowboy4_jump shoot_1_1
+      name: Time & weather_1
       rect:
         serializedVersion: 2
-        x: 35
-        y: 10
-        width: 8
-        height: 13
+        x: 64
+        y: 271
+        width: 48
+        height: 47
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 64e8a1cee43dca3a0800000000000000
-      internalID: -6652710213610992058
+      spriteID: a9b497c748aa51150800000000000000
+      internalID: 5842763577583815578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Time & weather_2
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 173
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8062135b10e5e7b0800000000000000
+      internalID: -5195500187139546994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Time & weather_3
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 160
+        width: 49
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08494a1b7d477d640800000000000000
+      internalID: 5104677172394890368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Time & weather_4
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 13
+        width: 146
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d458c7f7bace64fb0800000000000000
+      internalID: -4663780142773140147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Time & weather_5
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 270
+        width: 48
+        height: 47
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17b79e810ff839b10800000000000000
+      internalID: 1987090121973398385
       vertices: []
       indices: 
       edges: []
@@ -163,7 +263,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 80e23d062ab2b484ca3d4aaa506f45db
     internalID: 0
     vertices: []
     indices: 
@@ -173,8 +273,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Cowboy4_jump shoot_1_0: 6562127342811796341
-      Cowboy4_jump shoot_1_1: -6652710213610992058
+      Time & weather_0: 1424618829465984313
+      Time & weather_1: 5842763577583815578
+      Time & weather_2: -5195500187139546994
+      Time & weather_3: 5104677172394890368
+      Time & weather_4: -4663780142773140147
+      Time & weather_5: 1987090121973398385
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

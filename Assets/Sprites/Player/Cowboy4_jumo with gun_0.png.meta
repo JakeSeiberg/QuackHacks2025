@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cowboy4_jumo with gun_0_0: -1982567225030723565
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
