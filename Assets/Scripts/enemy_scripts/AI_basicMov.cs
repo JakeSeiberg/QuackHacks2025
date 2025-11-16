@@ -6,7 +6,6 @@ public class AI_basicMovement : MonoBehaviour
 {
     public float rushSpeed = 3f;
     public float strafeSpeed = 2f;
-    public float minStrafeDistance = 2f;    // Too close - rush back out
     public float maxStrafeDistance = 4f;    // Too far - rush back in
     public float enterStrafeDistance = 3f;  // Start strafing at this distance
 
@@ -47,7 +46,7 @@ public class AI_basicMovement : MonoBehaviour
             // ---- STRAFE MODE ----
             
             // Exit strafe if too far or too close
-            if (distance >= maxStrafeDistance || distance <= minStrafeDistance)
+            if (distance >= maxStrafeDistance)
             {
                 isStrafing = false;
                 return;
