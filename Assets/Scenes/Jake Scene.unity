@@ -272,8 +272,9 @@ MonoBehaviour:
   heartFullSprite: {fileID: 9139294957729004389, guid: 27909d090c9b54526bff64c0c1aa76a5, type: 3}
   heartEmptySprite: {fileID: 4458994651616342869, guid: 27909d090c9b54526bff64c0c1aa76a5, type: 3}
   maxHealth: 5
-  weaponIcon: {fileID: 0}
-  weaponSprites: []
+  weaponIcon: {fileID: 318264488}
+  weaponSprites:
+  - {fileID: 4321398367205095341, guid: b1ad7a52034354bc5a72201541c4b43d, type: 3}
   ammoText: {fileID: 799036650}
   currencyText: {fileID: 605466660}
   currencySymbol: $
@@ -11093,7 +11094,7 @@ GameObject:
   - component: {fileID: 1814297083}
   m_Layer: 7
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
