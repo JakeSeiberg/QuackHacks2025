@@ -136,6 +136,8 @@ MonoBehaviour:
   index: 0
   value: 0
   spriteRenderer: {fileID: 2638114169341631076}
+  roomSprite: {fileID: 4028311690065461819}
+  cellList: 
 --- !u!212 &4028311690065461819
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -180,7 +182,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1987090121973398385, guid: 629d1b7987c214b13920bf4f8000ae54, type: 3}
+  m_Sprite: {fileID: 989964191, guid: bbff97b0a01204eed872a2cf9be7bcc5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
