@@ -8,7 +8,6 @@ public class RoomManager : MonoBehaviour
     public Door doorPrefab;
     public static RoomManager instance;
     
-<<<<<<< HEAD
     private HashSet<string> createdDoors = new HashSet<string>();
     private List<Door> spawnedDoors = new List<Door>(); // ADD THIS LINE
 
@@ -27,10 +26,6 @@ public class RoomManager : MonoBehaviour
         spawnedDoors.Clear();
     }
 
-=======
-    private void Awake() { instance = this; }
-    
->>>>>>> 435ccf9a6c1ef167ad429cdeddac39fe7ac82cba
     public void SetupDoors(Room room, Cell cell)
     {
         int index = cell.index;
@@ -63,7 +58,6 @@ public class RoomManager : MonoBehaviour
     
     private void SpawnDoor(Room room, Cell originCell, int neighborIndex, EdgeDirection dir)
     {
-<<<<<<< HEAD
         if (neighborIndex < 0 || neighborIndex >= 100) return;
 
         if (MapGenerator.instance.getFloorPlan[neighborIndex] != 1) return;
@@ -94,22 +88,10 @@ public class RoomManager : MonoBehaviour
         return $"{smaller}-{larger}";
     }
 
-=======
-        Cell neighbor = MapGenerator.instance.getSpawnedCells.Find(c => c.index == neighborIndex);
-        if (neighbor == null) 
-            return;
-        
-        Door door = Instantiate(doorPrefab, room.transform);
-        door.transform.localPosition = GetDoorOffset(dir);
-        door.SetDoorType(originCell.roomType, neighbor.roomType, dir);
-    }
-    
->>>>>>> 435ccf9a6c1ef167ad429cdeddac39fe7ac82cba
     public Cell GetNeighborCell(int index)
     {
         return MapGenerator.instance.getSpawnedCells.First(c => c.index == index);
     }
-<<<<<<< HEAD
 
     private Vector3 GetDoorWorldPosition(Cell originCell, int neighborIndex, EdgeDirection dir)
     {
@@ -152,10 +134,6 @@ public class RoomManager : MonoBehaviour
 
     // Old method - no longer needed if using world positions
     private Vector2 GetDoorOffset(EdgeDirection dir)
-=======
-    
-    private Vector3 GetDoorOffset(EdgeDirection dir)
->>>>>>> 435ccf9a6c1ef167ad429cdeddac39fe7ac82cba
     {
         float halfWidth = MapGenerator.instance.roomWidth / 2f;
         float halfHeight = MapGenerator.instance.roomHeight / 2f;
