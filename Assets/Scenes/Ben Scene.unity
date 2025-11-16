@@ -528,6 +528,7 @@ MonoBehaviour:
   ghostFadeDuration: 0.5
   ghostColor: {r: 1, g: 1, b: 1, a: 0.5}
   playerWeapon: {fileID: 1388193780}
+  audioController: {fileID: 0}
 --- !u!61 &70425709
 BoxCollider2D:
   m_ObjectHideFlags: 0
