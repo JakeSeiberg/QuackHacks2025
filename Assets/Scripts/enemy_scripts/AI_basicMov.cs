@@ -57,6 +57,6 @@ public class AI_basicMovement : MonoBehaviour
             Vector2 perpendicular = new Vector2(-direction.y, direction.x);
             transform.position += (Vector3)(perpendicular * strafeSpeed * Time.deltaTime);
         }
-        Debug.Log($"Distance: {distance:F2}, Strafing: {isStrafing}");
+        //Debug.Log($"Distance: {distance:F2}, Strafing: {isStrafing}");
     }
 }

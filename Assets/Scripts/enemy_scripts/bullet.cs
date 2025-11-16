@@ -1,4 +1,5 @@
 using UnityEngine;
+
 public class bullet : MonoBehaviour{
     public float damage = 10f;
 private void OnTriggerEnter2D(Collider2D other)
@@ -9,5 +10,6 @@ private void OnTriggerEnter2D(Collider2D other)
         enemy.TakeDamage(damage);
         Destroy(gameObject); 
     }
+
 }
 }

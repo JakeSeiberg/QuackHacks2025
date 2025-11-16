@@ -2,16 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class GameHUD : MonoBehaviour
+public class InGameGUI : MonoBehaviour
 {
     [Header("Health UI")]
     public GameObject heartContainer;
     public Sprite heartFullSprite;
     public Sprite heartEmptySprite;
     public int maxHealth = 5;
-    public float heartSize = 60f; // Adjustable heart size
     private Image[] heartImages;
-    private int previousMaxHealth;
     
     [Header("Weapon UI")]
     public Image weaponIcon;
@@ -27,22 +25,12 @@ public class GameHUD : MonoBehaviour
     
     void Start()
     {
-        previousMaxHealth = maxHealth;
         SetupHearts();
         UpdateHUD();
     }
     
     void Update()
     {
-        // Check if max health changed and recreate hearts if needed
-        if (playerStats != null && playerStats.maxHealth != previousMaxHealth)
-        {
-            maxHealth = playerStats.maxHealth;
-            previousMaxHealth = maxHealth;
-            ClearHearts();
-            SetupHearts();
-        }
-        
         UpdateHUD();
     }
     
@@ -63,23 +51,10 @@ public class GameHUD : MonoBehaviour
             heartImage.preserveAspect = true;
             
             RectTransform rectTransform = heart.GetComponent<RectTransform>();
-            rectTransform.sizeDelta = new Vector2(heartSize, heartSize);
+            rectTransform.sizeDelta = new Vector2(40, 40);
             
             heartImages[i] = heartImage;
         }
-    }
-    
-    void ClearHearts()
-    {
-        if (heartContainer == null) return;
-        
-        // Destroy all existing heart GameObjects
-        foreach (Transform child in heartContainer.transform)
-        {
-            Destroy(child.gameObject);
-        }
-        
-        heartImages = null;
     }
     
     void UpdateHUD()

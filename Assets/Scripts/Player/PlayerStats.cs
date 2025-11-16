@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public static PlayerStats Instance { get; private set; }
+    
     [Header("Health")]
     public int maxHealth = 5;
     public int currentHealth = 5;
@@ -14,7 +16,18 @@ public class PlayerStats : MonoBehaviour
     [Header("Currency")]
     public int currency = 0;
     
-    // Public methods to modify stats
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    
     public void TakeDamage(int damage)
     {
         currentHealth = Mathf.Max(0, currentHealth - damage);
@@ -55,7 +68,6 @@ public class PlayerStats : MonoBehaviour
     public void SwitchWeapon(int weaponIndex)
     {
         currentWeaponIndex = weaponIndex;
-        // Reset ammo when switching weapons (optional)
         Reload();
     }
     
@@ -71,41 +83,31 @@ public class PlayerStats : MonoBehaviour
         currentHealth = Mathf.Min(currentHealth, maxHealth);
     }
     
-    void Die()
+    public void Die()
     {
         Debug.Log("Player died!");
         // Add death logic here
     }
     
-    // Example usage in Update for testing
     void Update()
     {
-        // Test controls (remove these in production)
+        // Test controls
         if (Input.GetKeyDown(KeyCode.H))
             TakeDamage(1);
-        
         if (Input.GetKeyDown(KeyCode.J))
             Heal(1);
-        
         if (Input.GetKeyDown(KeyCode.K))
             UseAmmo(1);
-        
         if (Input.GetKeyDown(KeyCode.R))
             Reload();
-        
         if (Input.GetKeyDown(KeyCode.C))
             AddCurrency(10);
-        
         if (Input.GetKeyDown(KeyCode.Alpha1))
             SwitchWeapon(0);
-        
         if (Input.GetKeyDown(KeyCode.Alpha2))
             SwitchWeapon(1);
-        
-        // Test max health changes
         if (Input.GetKeyDown(KeyCode.Equals) || Input.GetKeyDown(KeyCode.KeypadPlus))
             IncreaseMaxHealth(1);
-        
         if (Input.GetKeyDown(KeyCode.Minus) || Input.GetKeyDown(KeyCode.KeypadMinus))
             DecreaseMaxHealth(1);
     }
