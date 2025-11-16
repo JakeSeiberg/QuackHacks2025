@@ -131,18 +131,25 @@ public class MapGenerator : MonoBehaviour
         foreach (var cell in spawnedCells)
         {
             GameObject roomGO;
+            
+            // Use the cell's worldPosition instead of transform.position
+            Vector3 roomPosition = cell.worldPosition;
+            
             if (cell.roomType == Cell.RoomType.Boss)
             {
-               roomGO = Instantiate(
-                RoomManager.instance.BossRoomPrefabs.gameObject,
-                cell.transform.position, 
-                Quaternion.identity
-                ); 
+                roomPosition += new Vector3(-5.95f, 8.2f, 0f);
+
+                roomGO = Instantiate(
+                    RoomManager.instance.BossRoomPrefabs.gameObject,
+                    roomPosition,  // Changed from cell.transform.position
+                    Quaternion.identity
+                    ); 
             }
-            else{
+            else
+            {
                 roomGO = Instantiate(
                     RoomManager.instance.oneByOnePrefab.gameObject,
-                    cell.transform.position, 
+                    roomPosition,  // Changed from cell.transform.position
                     Quaternion.identity
                 );
             }
@@ -162,7 +169,6 @@ public class MapGenerator : MonoBehaviour
         {
             if (cell.spriteRenderer != null)
                 cell.spriteRenderer.enabled = false;
-
         }
     }
 
