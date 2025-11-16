@@ -1,67 +1,48 @@
-using System.Collections.Generic;
 using System.Linq;
-using System;
 using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    private List<Room> createdRooms;
-    public float xOff;
-    public float yOff;
-
-    public Room roomPrefab;
+    public Room oneByOnePrefab;
     public Door doorPrefab;
-
-    public DoorScriptable[] doors;
-    public RoomScriptable[] rooms;
 
     public static RoomManager instance;
 
-    private void Awake()
+    private void Awake() { instance = this; }
+
+    public void SetupDoors(Room room, Cell cell)
     {
-        instance = this;
-        createdRooms = new List<Room>();
+        TryDoor(cell.index - 10, EdgeDirection.Up, room, cell);
+        TryDoor(cell.index + 10, EdgeDirection.Down, room, cell);
+        TryDoor(cell.index - 1, EdgeDirection.Left, room, cell);
+        TryDoor(cell.index + 1, EdgeDirection.Right, room, cell);
     }
 
-    public void SetupRooms(List<Cell> spawnedCells)
+    private void TryDoor(int neighborIndex, EdgeDirection dir, Room room, Cell originCell)
     {
-        for (int i = createdRooms.Count - 1; i >= 0; i--)
-        {
-            Destroy(createdRooms[i].gameObject);
-        }
-        createdRooms.Clear();
+        if (neighborIndex < 0 || neighborIndex >= 100) return;
 
-        foreach (var currentCell in spawnedCells)
-        {
-            var foundRoom = rooms.FirstOrDefault(x => x.roomShape == currentCell.roomShape && x.roomType == currentCell.roomType && doesTileMatch(x.occupiedTiles, currentCell));
-            var currentPosition = currentCell.transform.position;
-            var convertedPosition = new Vector2(currentPosition.x * xOff, currentPosition.y * yOff);
-            var spawnedRoom = Instantiate(roomPrefab, convertedPosition, Quaternion.identity);
+        if (MapGenerator.instance.getFloorPlan[neighborIndex] != 1) return;
 
-            spawnedRoom.SetupRoom(currentCell, foundRoom);
-            createdRooms.Add(spawnedRoom);
-        }
+        Door door = Instantiate(doorPrefab, room.transform);
+        door.transform.localPosition = GetDoorOffset(dir);
+        door.SetDoorType(originCell.roomType, RoomManager.instance.GetNeighborCell(neighborIndex).roomType, dir);
     }
 
-    private bool doesTileMatch(int[] occupiedTiles, Cell cell)
+    public Cell GetNeighborCell(int index)
     {
-        if (occupiedTiles.Length != cell.cellList.Count){
-            return false;
-        }
-        int minIndex = cell.cellList.Min();
-        List<int> normalizedCell = new List<int>();
-        foreach (int index in cell.cellList)
+        return MapGenerator.instance.getSpawnedCells.First(c => c.index == index);
+    }
+
+    private Vector2 GetDoorOffset(EdgeDirection dir)
+    {
+        switch(dir)
         {
-            int dx = (index % 10) - (minIndex % 10);
-            int dy = (index / 10) - (minIndex / 10);
-
-            normalizedCell.Add(dy * 10 * dx);
+            case EdgeDirection.Up: return new Vector2(0, 1.75f);
+            case EdgeDirection.Down: return new Vector2(0, -1.75f);
+            case EdgeDirection.Left: return new Vector2(-4.25f, 0);
+            case EdgeDirection.Right: return new Vector2(4.25f, 0);
         }
-        normalizedCell.Sort();
-
-        int[] sortedOccupied = (int[])occupiedTiles.Clone();
-        Array.Sort(sortedOccupied);
-
-        return normalizedCell.SequenceEqual(sortedOccupied);
+        return Vector2.zero;
     }
 }

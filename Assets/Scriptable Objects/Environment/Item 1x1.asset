@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16b9d9ab863d94407b56c360e98e311c, type: 3}
   m_Name: Item 1x1
   m_EditorClassIdentifier: 
-  roomType: 3
+  roomType: 1
   roomShape: 0
   occupiedTiles: 00000000
   roomVariations:

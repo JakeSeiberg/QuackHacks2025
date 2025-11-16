@@ -4,7 +4,7 @@ using UnityEngine;
 public class RoomScriptable : ScriptableObject
 {
     public Cell.RoomType roomType;
-    public Cell.RoomShape roomShape;
-    public int[] occupiedTiles;
+
+    // Optional: different looks for the same type (e.g. 3 item rooms)
     public Sprite[] roomVariations;
 }
