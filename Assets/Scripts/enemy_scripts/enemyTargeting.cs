@@ -7,6 +7,9 @@ public class enemyTargeting : MonoBehaviour
     private Rigidbody2D rb;
     public float speed;
     public float rotateSpeed = 5f;
+    public weapon weapon;
+    public float fireRate = 1f;
+    private float nextFireTime = 0f;
      
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,6 +17,11 @@ public class enemyTargeting : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
 
+
+
+    }
+    void Update()
+    {
         Vector3 direction = player.transform.position - transform.position;
         rb.linearVelocity = new Vector2(direction.x, direction.y).normalized * speed;
 
@@ -21,6 +29,12 @@ public class enemyTargeting : MonoBehaviour
         float rot = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         transform.rotation = Quaternion.Euler(0,0, rot + 90); 
+        if (Time.time >= nextFireTime)
+        {
+            weapon.Fire();
+            nextFireTime = Time.time + 1f / fireRate;
+        }
     }
+
         
 }
