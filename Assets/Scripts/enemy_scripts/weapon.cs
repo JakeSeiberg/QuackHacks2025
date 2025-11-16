@@ -11,9 +11,11 @@ public class weapon : MonoBehaviour
     GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
 
     Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    Vector2 direction = (mousePos - firePoint.position).normalized;
+    mousePos.z = 0;
+
+    Vector2 direction = ((Vector2)mousePos - (Vector2)firePoint.position).normalized;
 
     Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-    rb.linearVelocity = direction * fireForce;
+    rb.AddForce(direction * fireForce, ForceMode2D.Impulse);
 }
 }
