@@ -13560,6 +13560,10 @@ MonoBehaviour:
   dashSpeed: 20
   dashDuration: 0.2
   dashCooldown: 1
+  collisionLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  dashCheckDistance: 1
   ghostSpawnInterval: 0.05
   ghostFadeDuration: 0.5
   ghostColor: {r: 1, g: 1, b: 1, a: 0.5}

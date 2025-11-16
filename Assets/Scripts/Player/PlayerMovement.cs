@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEditor;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float dashSpeed = 20f;
     public float dashDuration = 0.2f;
     public float dashCooldown = 1f;
+    public LayerMask collisionLayers; // Set this to include your tilemap layer
+    public float dashCheckDistance = 1f; // How far ahead to check for walls
     
     [Header("Dash Ghost Effect")]
     public float ghostSpawnInterval = 0.05f;
@@ -25,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private Collider2D playerCollider;
     private PlayerAnimation animator;
     private PlayerAnimation.AnimationDirection lastDirection = PlayerAnimation.AnimationDirection.Down;
-
+    
     public weapon playerWeapon;
     
     void Start()
@@ -55,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
         {
             playerWeapon.Fire();
         }
-
+        
         if (dashCooldownRemaining > 0)
         {
             dashCooldownRemaining -= Time.deltaTime;
@@ -169,7 +171,6 @@ public class PlayerMovement : MonoBehaviour
         }
         
         dashDirection = inputDir.normalized;
-        
         isDashing = true;
         dashTimeRemaining = dashDuration;
         dashCooldownRemaining = dashCooldown;
@@ -195,16 +196,33 @@ public class PlayerMovement : MonoBehaviour
         
         if (dashTimeRemaining <= 0)
         {
-            isDashing = false;
-            if (playerCollider != null)
-            {
-                playerCollider.enabled = true;
-            }
+            EndDash();
             return;
         }
         
         Vector3 dashMovement = dashDirection * dashSpeed * Time.deltaTime;
-        transform.position += dashMovement;
+        Vector3 targetPosition = transform.position + dashMovement;
+        
+        // Check for wall collision before moving
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dashDirection, dashMovement.magnitude, collisionLayers);
+        
+        if (hit.collider != null)
+        {
+            // Wall detected, stop the dash
+            EndDash();
+            return;
+        }
+        
+        transform.position = targetPosition;
+    }
+    
+    void EndDash()
+    {
+        isDashing = false;
+        if (playerCollider != null)
+        {
+            playerCollider.enabled = true;
+        }
     }
     
     void SpawnDashGhost()
