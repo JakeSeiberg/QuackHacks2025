@@ -17,6 +17,7 @@ public class weapon : MonoBehaviour
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.AddForce(direction * fireForce, ForceMode2D.Impulse);
+    
     }   
 
     void OnCollisionEnter2D(Collision2D collision)
