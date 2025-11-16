@@ -9,7 +9,7 @@ public class enemyShooting : MonoBehaviour
     {
         if (Time.time >= nextFireTime)
         {
-            weapon.Fire();
+            weapon.enemyFire();
             nextFireTime = Time.time + 1f / fireRate;
         }
     }

@@ -13,7 +13,6 @@ public class rotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = firePoint.rotation;
         
     }
 }
