@@ -30,10 +30,15 @@ public class AI_basicMovement : MonoBehaviour
         float distance = toPlayer.magnitude;
         Vector2 direction = toPlayer.normalized;
 
+        float rushRange = 10f;  
+
         if (!isStrafing)
         {
+
+            if (distance <= rushRange){
             // ---- RUSH MODE ----
             transform.position += (Vector3)(direction * rushSpeed * Time.deltaTime);
+          }
 
             // Enter strafe mode when in range
             if (distance <= enterStrafeDistance)

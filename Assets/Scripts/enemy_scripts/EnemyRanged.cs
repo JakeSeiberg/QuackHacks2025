@@ -23,6 +23,7 @@ public class EnemyRanged : MonoBehaviour
         Vector2 direction = (player.position - transform.position).normalized;
         if (distance > range)
         {
+            Debug.Log("hit");
             return;
         }
 
