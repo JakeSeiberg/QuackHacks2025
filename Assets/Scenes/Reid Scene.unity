@@ -506,6 +506,7 @@ MonoBehaviour:
   currentAmmo: 30
   maxAmmo: 30
   currency: 0
+  inFuture: 0
 --- !u!114 &483607921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -530,6 +531,7 @@ MonoBehaviour:
   ghostFadeDuration: 0.5
   ghostColor: {r: 1, g: 1, b: 1, a: 0.5}
   playerWeapon: {fileID: 0}
+  audioController: {fileID: 0}
 --- !u!61 &483607922
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -726,10 +728,8 @@ MonoBehaviour:
   cellPrefab: {fileID: 3981818999615959195, guid: 7a469c28688da49328fdc534d171040d, type: 3}
   item: {fileID: 21300000, guid: 26648ca6c98704ba5a8ae52ea710c990, type: 3}
   shop: {fileID: 21300000, guid: afd5b43b87c134ac19f5f3acea0b882e, type: 3}
-  boss: {fileID: 21300000, guid: 68ba3074974e641be855bd0df16becf4, type: 3}
-  largeRoom: {fileID: -1218987445, guid: bbff97b0a01204eed872a2cf9be7bcc5, type: 3}
-  verticalRoom: {fileID: 296785085854354121, guid: bbff97b0a01204eed872a2cf9be7bcc5, type: 3}
-  horizontalRoom: {fileID: 957628222, guid: bbff97b0a01204eed872a2cf9be7bcc5, type: 3}
+  boss: {fileID: 2347885201555898235, guid: 246652499dbc4450abb4fdff33d83c82, type: 3}
+  oneByOneRoomPrefabs: []
 --- !u!4 &598229049
 Transform:
   m_ObjectHideFlags: 0
@@ -758,9 +758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oneByOnePrefab: {fileID: 656554883392131826, guid: 59f53f203e3874326addffeeca3ddde0, type: 3}
-  oneByTwoPrefab: {fileID: 4788808619600288434, guid: a5547803834654147aca3a000e07f9ec, type: 3}
-  twoByOnePrefab: {fileID: 1833174010974386850, guid: 316f3e9012d7f45f6a9f27753f5107d3, type: 3}
-  twoByTwoPrefab: {fileID: 587833297637331774, guid: 70521b052774d4d509d45dd93aba76ad, type: 3}
+  BossRoomPrefabs: {fileID: 1740523171283815339, guid: 7db8d465b62e84643a0e6b9cc79fc062, type: 3}
   doorPrefab: {fileID: 5178153984242614403, guid: b5474e07bf7af47419f105aabf827f46, type: 3}
 --- !u!1 &709811316
 GameObject:
