@@ -162,10 +162,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001aa07beb5ce4972a6f7c8695546e32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: 0
+  direction: 2
   originRoomType: 0
   neighborRoomType: 0
   teleportDistance: 3.26
+  activationRadius: 4
   cooldownTime: 0.5
   playerLayer:
     serializedVersion: 2

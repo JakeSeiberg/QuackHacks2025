@@ -4,12 +4,13 @@ using UnityEngine;
 public class DoorTeleport : MonoBehaviour
 {
     [Header("Door Configuration")]
-    public EdgeDirection direction;
-    public RoomType originRoomType;
-    public RoomType neighborRoomType;
+    public EdgeDirection2 direction;
+    public Cell.RoomType originRoomType;
+    public Cell.RoomType neighborRoomType;
     
     [Header("Teleport Settings")]
-    public float teleportDistance = 2f; // How far to teleport player past the door
+    public float teleportDistanceHorizontal = 2f; // How far to teleport player past the door (left/right)
+    public float teleportDistanceVertical = 2f; // How far to teleport player past the door (up/down)
     public float activationRadius = 1f; // Distance to check for player
     public float cooldownTime = 1f; // Prevent rapid back-and-forth teleporting
     public LayerMask playerLayer; // Assign player layer in inspector
@@ -48,9 +49,12 @@ public class DoorTeleport : MonoBehaviour
         lastUsedDoor = this;
         playerTransform = player;
         
-        // Calculate teleport destination based on door direction
-        Vector3 teleportOffset = GetTeleportOffset();
+        // Determine which side of the door the player is on
+        Vector3 playerToDoor = transform.position - player.position;
+        Vector3 teleportOffset = GetSmartTeleportOffset(playerToDoor);
         Vector3 newPosition = transform.position + teleportOffset;
+        
+        Debug.Log($"Player at {player.position}, Door at {transform.position}, Direction: {direction}, Offset: {teleportOffset}, New Position: {newPosition}");
         
         // Optional: Spawn visual effect
         if (teleportEffect != null)
@@ -81,19 +85,61 @@ public class DoorTeleport : MonoBehaviour
         StartCoroutine(TeleportCooldown());
     }
     
+    private Vector3 GetSmartTeleportOffset(Vector3 playerToDoor)
+    {
+        // Determine which side of the door the player is approaching from
+        // and teleport them to the opposite side
+        
+        switch (direction)
+        {
+            case EdgeDirection2.Up:
+            case EdgeDirection2.Down:
+                // Door is horizontal (connects rooms vertically)
+                // Check if player is above or below the door
+                if (playerToDoor.y > 0)
+                {
+                    // Player is below, teleport them up
+                    return new Vector3(0, teleportDistanceVertical, 0);
+                }
+                else
+                {
+                    // Player is above, teleport them down
+                    return new Vector3(0, -teleportDistanceVertical, 0);
+                }
+                
+            case EdgeDirection2.Left:
+            case EdgeDirection2.Right:
+                // Door is vertical (connects rooms horizontally)
+                // Check if player is left or right of the door
+                if (playerToDoor.x > 0)
+                {
+                    // Player is on the left, teleport them right
+                    return new Vector3(teleportDistanceHorizontal, 0, 0);
+                }
+                else
+                {
+                    // Player is on the right, teleport them left
+                    return new Vector3(-teleportDistanceHorizontal, 0, 0);
+                }
+                
+            default:
+                return Vector3.zero;
+        }
+    }
+    
     private Vector3 GetTeleportOffset()
     {
         // Teleport player to the opposite side of the door
         switch (direction)
         {
-            case EdgeDirection.Up:
-                return new Vector3(0, teleportDistance, 0);
-            case EdgeDirection.Down:
-                return new Vector3(0, -teleportDistance, 0);
-            case EdgeDirection.Left:
-                return new Vector3(-teleportDistance, 0, 0);
-            case EdgeDirection.Right:
-                return new Vector3(teleportDistance, 0, 0);
+            case EdgeDirection2.Up:
+                return new Vector3(0, teleportDistanceVertical, 0);
+            case EdgeDirection2.Down:
+                return new Vector3(0, -teleportDistanceVertical, 0);
+            case EdgeDirection2.Left:
+                return new Vector3(-teleportDistanceHorizontal, 0, 0);
+            case EdgeDirection2.Right:
+                return new Vector3(teleportDistanceHorizontal, 0, 0);
             default:
                 return Vector3.zero;
         }
@@ -134,7 +180,7 @@ public class DoorTeleport : MonoBehaviour
         }
     }
     
-    public void SetDoorType(RoomType origin, RoomType neighbor, EdgeDirection dir)
+    public void SetDoorType(Cell.RoomType origin, Cell.RoomType neighbor, EdgeDirection2 dir)
     {
         originRoomType = origin;
         neighborRoomType = neighbor;
@@ -149,16 +195,16 @@ public class DoorTeleport : MonoBehaviour
         // Rotate the door's visual representation to match its direction
         switch (direction)
         {
-            case EdgeDirection.Up:
+            case EdgeDirection2.Up:
                 transform.rotation = Quaternion.Euler(0, 0, 0);
                 break;
-            case EdgeDirection.Down:
+            case EdgeDirection2.Down:
                 transform.rotation = Quaternion.Euler(0, 0, 180);
                 break;
-            case EdgeDirection.Left:
+            case EdgeDirection2.Left:
                 transform.rotation = Quaternion.Euler(0, 0, 90);
                 break;
-            case EdgeDirection.Right:
+            case EdgeDirection2.Right:
                 transform.rotation = Quaternion.Euler(0, 0, -90);
                 break;
         }
@@ -176,6 +222,15 @@ public class DoorTeleport : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + offset);
         Gizmos.DrawWireSphere(transform.position + offset, 0.3f);
     }
+}
+
+// Make sure these enums match your existing code
+public enum EdgeDirection2
+{
+    Up,
+    Down,
+    Left,
+    Right
 }
 
 public enum RoomType

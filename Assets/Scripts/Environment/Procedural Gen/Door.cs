@@ -3,9 +3,9 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
-    public EdgeDirection direction;
+    public EdgeDirection3 direction;
 
-    public void SetDoorType(Cell.RoomType fromRoomType, Cell.RoomType toRoomType, EdgeDirection dir)
+    public void SetDoorType(Cell.RoomType fromRoomType, Cell.RoomType toRoomType, EdgeDirection3 dir)
     {
         direction = dir;
 
@@ -13,12 +13,12 @@ public class Door : MonoBehaviour
         {
             switch(dir)
             {
-                case EdgeDirection.Up:
-                case EdgeDirection.Down:
+                case EdgeDirection3.Up:
+                case EdgeDirection3.Down:
                     spriteRenderer.color = Color.white;
                     break;
-                case EdgeDirection.Left:
-                case EdgeDirection.Right:
+                case EdgeDirection3.Left:
+                case EdgeDirection3.Right:
                     spriteRenderer.color = Color.gray;
                     break;
             }

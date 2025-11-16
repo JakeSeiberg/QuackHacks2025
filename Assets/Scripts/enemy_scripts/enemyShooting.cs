@@ -9,19 +9,25 @@ public class enemyShooting : MonoBehaviour
 
     private void Update(){
 
-    if (!player) return;
+        if (!player) return;
 
-    float distance = Vector2.Distance(transform.position, player.position);
+        float distance = Vector2.Distance(transform.position, player.position);
 
-    // Player too far → don't fire
-    if (distance > range)
-        return;
+        if (distance > range)
+            return;
 
-    // Player close enough → checking fire cooldown
-    if (Time.time >= nextFireTime)
-    {
-        weapon.enemyFire();
-        nextFireTime = Time.time + 1f / fireRate;
+        if (Time.time >= nextFireTime)
+        {
+            weapon.enemyFire();
+            nextFireTime = Time.time + 1f / fireRate;
+        }
     }
-}
+    void Start()
+        {
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+            }
+        }
 }

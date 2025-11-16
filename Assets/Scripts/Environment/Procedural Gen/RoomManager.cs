@@ -10,7 +10,7 @@ public class RoomManager : MonoBehaviour
     public static RoomManager instance;
     
     private HashSet<string> createdDoors = new HashSet<string>();
-    private List<Door> spawnedDoors = new List<Door>(); // ADD THIS LINE
+    private List<Door> spawnedDoors = new List<Door>();
 
     private void Awake() { instance = this; }
     
@@ -18,7 +18,6 @@ public class RoomManager : MonoBehaviour
     {
         createdDoors.Clear();
         
-        // ADD THESE LINES to destroy all doors
         foreach (var door in spawnedDoors)
         {
             if (door != null)
@@ -37,12 +36,12 @@ public class RoomManager : MonoBehaviour
             index - 1,  // Left
             index + 1   // Right
         };
-        EdgeDirection[] directions = new EdgeDirection[]
+        EdgeDirection3[] directions = new EdgeDirection3[]
         {
-            EdgeDirection.Up,
-            EdgeDirection.Down,
-            EdgeDirection.Left,
-            EdgeDirection.Right
+            EdgeDirection3.Up,
+            EdgeDirection3.Down,
+            EdgeDirection3.Left,
+            EdgeDirection3.Right
         };
         
         for (int i = 0; i < 4; i++)
@@ -50,6 +49,19 @@ public class RoomManager : MonoBehaviour
             int nIndex = neighbors[i];
             if (nIndex < 0 || nIndex >= 100)
                 continue;
+            
+            // Check if column is valid for left/right
+            if (i == 2) // Left
+            {
+                int col = index % 10;
+                if (col == 0) continue;
+            }
+            if (i == 3) // Right
+            {
+                int col = index % 10;
+                if (col == 9) continue;
+            }
+            
             if (MapGenerator.instance.getFloorPlan[nIndex] == 1)
             {
                 SpawnDoor(room, cell, nIndex, directions[i]);
@@ -57,7 +69,7 @@ public class RoomManager : MonoBehaviour
         }
     }
     
-    private void SpawnDoor(Room room, Cell originCell, int neighborIndex, EdgeDirection dir)
+    private void SpawnDoor(Room room, Cell originCell, int neighborIndex, EdgeDirection3 dir)
     {
         if (neighborIndex < 0 || neighborIndex >= 100) return;
 
@@ -70,20 +82,26 @@ public class RoomManager : MonoBehaviour
         
         createdDoors.Add(doorID);
 
-        // USE MIDPOINT instead of edge position
         Vector3 doorWorldPosition = GetDoorWorldPosition(originCell, neighborIndex, dir);
 
         Door door = Instantiate(doorPrefab, doorWorldPosition, Quaternion.identity);
         
         spawnedDoors.Add(door);
         
-        door.SetDoorType(originCell.roomType, RoomManager.instance.GetNeighborCell(neighborIndex).roomType, dir);
+        Debug.Log($"Spawned door at {doorWorldPosition} with direction: {dir} connecting cells {originCell.index} and {neighborIndex}");
+        
+        // Get the DoorTeleport component from the Door
+        DoorTeleport doorTeleport = door.GetComponent<DoorTeleport>();
+        if (doorTeleport != null)
+        {
+            // Convert EdgeDirection to EdgeDirection2
+            EdgeDirection2 dir2 = (EdgeDirection2)((int)dir);
+            doorTeleport.SetDoorType(originCell.roomType, RoomManager.instance.GetNeighborCell(neighborIndex).roomType, dir2);
+        }
     }
         
     private string GetDoorID(int index1, int index2)
     {
-        // Always use the smaller index first to ensure the same door gets the same ID
-        // regardless of which room creates it
         int smaller = Mathf.Min(index1, index2);
         int larger = Mathf.Max(index1, index2);
         return $"{smaller}-{larger}";
@@ -94,19 +112,16 @@ public class RoomManager : MonoBehaviour
         return MapGenerator.instance.getSpawnedCells.First(c => c.index == index);
     }
 
-    private Vector3 GetDoorWorldPosition(Cell originCell, int neighborIndex, EdgeDirection dir)
+    private Vector3 GetDoorWorldPosition(Cell originCell, int neighborIndex, EdgeDirection3 dir)
     {
         Cell neighborCell = GetNeighborCell(neighborIndex);
         
-        // Get positions of both rooms
         Vector3 originPos = originCell.transform.position;
         Vector3 neighborPos = neighborCell.transform.position;
         
-        // Door should be exactly between the two rooms (midpoint)
         Vector3 midpoint = (originPos + neighborPos) / 2f;
         
-        // Add vertical offset to move doors down
-        float verticalOffset = 3.25f; // Adjust this value as needed (negative = down, positive = up)
+        float verticalOffset = 3.25f;
         float horizontalOffset = -6f;
         midpoint.y += verticalOffset;
         midpoint.x += horizontalOffset;
@@ -114,8 +129,7 @@ public class RoomManager : MonoBehaviour
         return midpoint;
     }
 
-    // Alternative: Position door at edge of current room
-    private Vector3 GetDoorWorldPositionAtEdge(Cell originCell, EdgeDirection dir)
+    private Vector3 GetDoorWorldPositionAtEdge(Cell originCell, EdgeDirection3 dir)
     {
         Vector3 cellPos = originCell.transform.position;
         float halfWidth = MapGenerator.instance.roomWidth / 2f;
@@ -123,31 +137,39 @@ public class RoomManager : MonoBehaviour
         
         switch(dir)
         {
-            case EdgeDirection.Up: 
+            case EdgeDirection3.Up: 
                 return cellPos + new Vector3(0, halfHeight, 0);
-            case EdgeDirection.Down: 
+            case EdgeDirection3.Down: 
                 return cellPos + new Vector3(0, -halfHeight, 0);
-            case EdgeDirection.Left: 
+            case EdgeDirection3.Left: 
                 return cellPos + new Vector3(-halfWidth, 0, 0);
-            case EdgeDirection.Right: 
+            case EdgeDirection3.Right: 
                 return cellPos + new Vector3(halfWidth, 0, 0);
         }
         return cellPos;
     }
 
-    // Old method - no longer needed if using world positions
-    private Vector2 GetDoorOffset(EdgeDirection dir)
+    private Vector2 GetDoorOffset(EdgeDirection3 dir)
     {
         float halfWidth = MapGenerator.instance.roomWidth / 2f;
         float halfHeight = MapGenerator.instance.roomHeight / 2f;
         
         switch (dir)
         {
-            case EdgeDirection.Up:    return new Vector3(0, halfHeight, 0);
-            case EdgeDirection.Down:  return new Vector3(0, -halfHeight, 0);
-            case EdgeDirection.Left:  return new Vector3(-halfWidth, 0, 0);
-            case EdgeDirection.Right: return new Vector3(halfWidth, 0, 0);
+            case EdgeDirection3.Up:    return new Vector3(0, halfHeight, 0);
+            case EdgeDirection3.Down:  return new Vector3(0, -halfHeight, 0);
+            case EdgeDirection3.Left:  return new Vector3(-halfWidth, 0, 0);
+            case EdgeDirection3.Right: return new Vector3(halfWidth, 0, 0);
         }
         return Vector3.zero;
     }
+}
+
+// Keep the original EdgeDirection enum
+public enum EdgeDirection3
+{
+    Up,
+    Down,
+    Left,
+    Right
 }

@@ -25,14 +25,14 @@ public class PlayerTimeTravel : MonoBehaviour
         if (PlayerStats.Instance.inFuture)
         {
             Vector3 tmpPos = gameObject.transform.position;
-            tmpPos.x += 100;
+            tmpPos.x -= 245;
             gameObject.transform.position = tmpPos;
             PlayerStats.Instance.inFuture = false;
         }
         else
         {
             Vector3 tmpPos = gameObject.transform.position;
-            tmpPos.x -= 100;
+            tmpPos.x += 245;
             gameObject.transform.position = tmpPos;
             PlayerStats.Instance.inFuture = true;
         }

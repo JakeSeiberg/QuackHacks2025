@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using System.Linq;
 using TMPro;
+using Unity.AI.Navigation;
 
 public class MapGenerator : MonoBehaviour
 {  
@@ -31,6 +32,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private Sprite item;
     [SerializeField] private Sprite shop;
     [SerializeField] private Sprite boss;
+    [SerializeField] private NavMeshSurface navMeshSurface;
 
     [SerializeField] private GameObject[] oneByOneRoomPrefabs; // Array of 1x1 room variants
     
@@ -50,10 +52,6 @@ public class MapGenerator : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SetupDungeon();
-        }
     }
 
     void SetupDungeon()
@@ -75,6 +73,11 @@ public class MapGenerator : MonoBehaviour
 
         VisitCell(45);
         GenerateDungeon();
+
+        if (navMeshSurface != null)
+            {
+                navMeshSurface.BuildNavMesh();
+            }
     }
     
     void GenerateDungeon()
