@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 5a2490d8e23064c7d834730c52582c31
+guid: a99bcc87385254708a92e7546a2e50c7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3283341523123257543
-    second: Cowboy4_idle without gun_1_0
+      213: 490551102607535100
+    second: Cowboy-Up-Shoot_0
+  - first:
+      213: -7250208185175609802
+    second: Cowboy-Up-Shoot_1
+  - first:
+      213: 5578888198809450363
+    second: Cowboy-Up-Shoot_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cowboy4_idle without gun_1_0
+      name: Cowboy-Up-Shoot_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 31
-        height: 38
+        x: 19
+        y: 4
+        width: 25
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c04d0a28b5c09d20800000000000000
-      internalID: 3283341523123257543
+      spriteID: cfb2917f0a9cec600800000000000000
+      internalID: 490551102607535100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cowboy-Up-Shoot_1
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 3
+        width: 27
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63e6afe9116126b90800000000000000
+      internalID: -7250208185175609802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cowboy-Up-Shoot_2
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 4
+        width: 26
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b77f7a332413c6d40800000000000000
+      internalID: 5578888198809450363
       vertices: []
       indices: 
       edges: []
@@ -147,8 +197,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Cowboy4_idle without gun_1_0: 3283341523123257543
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 5a2490d8e23064c7d834730c52582c31
+guid: 550358c1f543c4e89b9f105672ca7869
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3283341523123257543
-    second: Cowboy4_idle without gun_1_0
+      213: -703777206965757590
+    second: Cowboy-Left-Shoot-Shadow_0
+  - first:
+      213: -6032319686350973213
+    second: Cowboy-Left-Shoot-Shadow_1
+  - first:
+      213: -7297873324357338917
+    second: Cowboy-Left-Shoot-Shadow_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cowboy4_idle without gun_1_0
+      name: Cowboy-Left-Shoot-Shadow_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 31
-        height: 38
+        x: 6
+        y: 2
+        width: 42
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c04d0a28b5c09d20800000000000000
-      internalID: 3283341523123257543
+      spriteID: a691ac9eb5eab36f0800000000000000
+      internalID: -703777206965757590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cowboy-Left-Shoot-Shadow_1
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 2
+        width: 50
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e65473b435e84ca0800000000000000
+      internalID: -6032319686350973213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cowboy-Left-Shoot-Shadow_2
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 2
+        width: 50
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd8b1e590eeb8ba90800000000000000
+      internalID: -7297873324357338917
       vertices: []
       indices: 
       edges: []
@@ -147,8 +197,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Cowboy4_idle without gun_1_0: 3283341523123257543
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

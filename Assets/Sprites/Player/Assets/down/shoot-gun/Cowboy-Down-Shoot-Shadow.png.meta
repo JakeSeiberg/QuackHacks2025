@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 5a2490d8e23064c7d834730c52582c31
+guid: 7029b28bea8d04f8db5adf6fdc49eea8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3283341523123257543
-    second: Cowboy4_idle without gun_1_0
+      213: -3453182520167743109
+    second: Cowboy-Down-Shoot-Shadow_0
+  - first:
+      213: -1954288133075607223
+    second: Cowboy-Down-Shoot-Shadow_1
+  - first:
+      213: -1561551034222897007
+    second: Cowboy-Down-Shoot-Shadow_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cowboy4_idle without gun_1_0
+      name: Cowboy-Down-Shoot-Shadow_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 31
-        height: 38
+        x: 17
+        y: 4
+        width: 29
+        height: 47
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c04d0a28b5c09d20800000000000000
-      internalID: 3283341523123257543
+      spriteID: b7140dc2bc4d310d0800000000000000
+      internalID: -3453182520167743109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cowboy-Down-Shoot-Shadow_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 0
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94164471c49f0e4e0800000000000000
+      internalID: -1954288133075607223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cowboy-Down-Shoot-Shadow_2
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 3
+        width: 29
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 198108a9b91445ae0800000000000000
+      internalID: -1561551034222897007
       vertices: []
       indices: 
       edges: []
@@ -147,8 +197,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Cowboy4_idle without gun_1_0: 3283341523123257543
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

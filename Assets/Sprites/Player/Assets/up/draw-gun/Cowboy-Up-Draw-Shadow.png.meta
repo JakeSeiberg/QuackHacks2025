@@ -1,10 +1,25 @@
 fileFormatVersion: 2
-guid: 5a2490d8e23064c7d834730c52582c31
+guid: e0b74689d24784490b71da7fefffc1b1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3283341523123257543
-    second: Cowboy4_idle without gun_1_0
+      213: 965933029308992320
+    second: Cowboy-Up-Draw-Shadow_0
+  - first:
+      213: -6475760209384014182
+    second: Cowboy-Up-Draw-Shadow_1
+  - first:
+      213: 1756906244183268936
+    second: Cowboy-Up-Draw-Shadow_2
+  - first:
+      213: -1816604694088041582
+    second: Cowboy-Up-Draw-Shadow_3
+  - first:
+      213: 1305902400654505668
+    second: Cowboy-Up-Draw-Shadow_4
+  - first:
+      213: 7168740416258879109
+    second: Cowboy-Up-Draw-Shadow_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +128,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cowboy4_idle without gun_1_0
+      name: Cowboy-Up-Draw-Shadow_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 31
-        height: 38
+        x: 18
+        y: 3
+        width: 27
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +143,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c04d0a28b5c09d20800000000000000
-      internalID: 3283341523123257543
+      spriteID: 04b87c0f8fea76d00800000000000000
+      internalID: 965933029308992320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cowboy-Up-Draw-Shadow_1
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 3
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9e7e0d466a7126a0800000000000000
+      internalID: -6475760209384014182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cowboy-Up-Draw-Shadow_2
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 0
+        width: 32
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84e953cabe8c16810800000000000000
+      internalID: 1756906244183268936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cowboy-Up-Draw-Shadow_3
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 0
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29b339fc7af1ac6e0800000000000000
+      internalID: -1816604694088041582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cowboy-Up-Draw-Shadow_4
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 0
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c6775e705f7f1210800000000000000
+      internalID: 1305902400654505668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cowboy-Up-Draw-Shadow_5
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 0
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58ea81e4d6b7c7360800000000000000
+      internalID: 7168740416258879109
       vertices: []
       indices: 
       edges: []
@@ -147,8 +272,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Cowboy4_idle without gun_1_0: 3283341523123257543
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
