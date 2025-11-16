@@ -105,8 +105,10 @@ public class RoomManager : MonoBehaviour
         Vector3 midpoint = (originPos + neighborPos) / 2f;
         
         // Add vertical offset to move doors down
-        float verticalOffset = -5f; // Adjust this value as needed (negative = down, positive = up)
+        float verticalOffset = 3.25f; // Adjust this value as needed (negative = down, positive = up)
+        float horizontalOffset = -6f;
         midpoint.y += verticalOffset;
+        midpoint.x += horizontalOffset;
         
         return midpoint;
     }
