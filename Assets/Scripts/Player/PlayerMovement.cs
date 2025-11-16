@@ -51,11 +51,34 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
+    
+    private float reloadCooldown = 1f;
+    private float reloadTimeRemaining = 0f;
+
     void Update()
     {
+        // Countdown reload timer
+        if (reloadTimeRemaining > 0)
+        {
+            reloadTimeRemaining -= Time.deltaTime;
+        }
+        
         if (Input.GetButtonDown("Fire1"))
         {
-            playerWeapon.Fire();
+            // Only allow firing if not currently reloading
+            if (reloadTimeRemaining <= 0)
+            {
+                if (PlayerStats.Instance.currentAmmo > 0)
+                {
+                    playerWeapon.Fire();
+                    PlayerStats.Instance.UseAmmo();
+                }
+                else
+                {
+                    PlayerStats.Instance.Reload();
+                    reloadTimeRemaining = reloadCooldown; // Start reload cooldown
+                }
+            }
         }
         
         if (dashCooldownRemaining > 0)
@@ -70,7 +93,6 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             HandleMovement();
-            
             if (Input.GetKeyDown(KeyCode.Space) && dashCooldownRemaining <= 0)
             {
                 StartDash();

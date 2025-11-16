@@ -10,11 +10,14 @@ public class PlayerStats : MonoBehaviour
     
     [Header("Weapon")]
     public int currentWeaponIndex = 0;
-    public int currentAmmo = 30;
-    public int maxAmmo = 30;
+    public int currentAmmo = 6;
+    public int maxAmmo = 6;
     
     [Header("Currency")]
     public int currency = 0;
+
+    [Header("Position")]
+    public bool inFuture = false;
     
     void Awake()
     {
@@ -26,7 +29,7 @@ public class PlayerStats : MonoBehaviour
         
         Instance = this;
         DontDestroyOnLoad(gameObject);
-    }
+    } 
     
     public void TakeDamage(int damage)
     {
