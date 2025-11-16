@@ -9,6 +9,7 @@ private void OnTriggerEnter2D(Collider2D other)
     if (enemy != null)
     {
         enemy.TakeDamage(damage);
+        Debug.Log("hit");
         Destroy(gameObject); 
     }
 

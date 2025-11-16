@@ -8,6 +8,7 @@ TagManager:
   - wall
   - sniper
   - rusher
+  - bigGun
   layers:
   - Default
   - TransparentFX

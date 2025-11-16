@@ -4,7 +4,7 @@ public class weapon : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public Transform firePoint;
-    public float fireForce = 20f;
+    public float fireForce = 15f;
 
     public void Fire()
     {
@@ -26,7 +26,7 @@ public class weapon : MonoBehaviour
         Rigidbody2D rb = gun.GetComponent<Rigidbody2D>();
         if (gameObject.CompareTag("sniper")){
 
-            rb.linearVelocity = (firePoint.up * fireForce);
+            rb.linearVelocity = (firePoint.up * 13);
         }
         else{
             rb.linearVelocity = -(firePoint.up * fireForce);

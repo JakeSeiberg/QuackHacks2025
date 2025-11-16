@@ -67,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             // Only allow firing if not currently reloading
+
             if (reloadTimeRemaining <= 0)
             {
                 if (PlayerStats.Instance.currentAmmo > 0)
