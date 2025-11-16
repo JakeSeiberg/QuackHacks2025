@@ -186,7 +186,7 @@ RectTransform:
   - {fileID: 1735308508}
   - {fileID: 799036649}
   - {fileID: 605466659}
-  m_Father: {fileID: 502823576}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -254,7 +254,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 100
   m_TargetDisplay: 0
 --- !u!114 &237047745
 MonoBehaviour:
@@ -272,6 +272,7 @@ MonoBehaviour:
   heartFullSprite: {fileID: 9139294957729004389, guid: 27909d090c9b54526bff64c0c1aa76a5, type: 3}
   heartEmptySprite: {fileID: 4458994651616342869, guid: 27909d090c9b54526bff64c0c1aa76a5, type: 3}
   maxHealth: 5
+  heartSize: 60
   weaponIcon: {fileID: 0}
   weaponSprites: []
   ammoText: {fileID: 799036650}
@@ -510,8 +511,8 @@ Camera:
   m_GameObject: {fileID: 502823572}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -560,13 +561,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 502823572}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -11.002795}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 237047741}
-  m_Father: {fileID: 0}
+  m_Children: []
+  m_Father: {fileID: 2007849575}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &605466658
 GameObject:
@@ -652,8 +652,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -13091,7 +13091,8 @@ Transform:
   m_LocalPosition: {x: 0.05, y: 2.45, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 502823576}
   m_Father: {fileID: 348957908}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2007849576
@@ -13113,6 +13114,7 @@ MonoBehaviour:
   ghostSpawnInterval: 0.05
   ghostFadeDuration: 0.5
   ghostColor: {r: 1, g: 1, b: 1, a: 0.5}
+  playerWeapon: {fileID: 0}
 --- !u!61 &2007849577
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13253,8 +13255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cbcd80802b34684a85e3fdc7eeafb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  currentHealth: 10
+  maxHealth: 5
+  currentHealth: 5
   currentWeaponIndex: 0
   currentAmmo: 30
   maxAmmo: 30
@@ -13344,7 +13346,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 395925989}
   - {fileID: 10190120}
-  - {fileID: 502823576}
   - {fileID: 1730023800}
   - {fileID: 348957908}
   - {fileID: 2125873103}
+  - {fileID: 237047741}
