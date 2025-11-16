@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
     private float ghostSpawnTimer;
     private SpriteRenderer spriteRenderer;
     private Collider2D playerCollider;
+    private PlayerAnimation animator;
+    private PlayerAnimation.AnimationDirection lastDirection = PlayerAnimation.AnimationDirection.Down;
 
     public weapon playerWeapon;
     
@@ -39,13 +41,19 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.LogWarning("PlayerMovement: No Collider2D found! Collision toggling requires a Collider2D.");
         }
+        
+        animator = GetComponent<PlayerAnimation>();
+        if (animator == null)
+        {
+            Debug.LogWarning("PlayerMovement: No PlayerAnimation found! Add PlayerAnimation component for animations.");
+        }
     }
     
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
-        playerWeapon.Fire();
+            playerWeapon.Fire();
         }
 
         if (dashCooldownRemaining > 0)
@@ -71,22 +79,57 @@ public class PlayerMovement : MonoBehaviour
     void HandleMovement()
     {
         Vector3 pos = transform.position;
+        bool isMoving = false;
+        PlayerAnimation.AnimationDirection moveDirection = lastDirection;
         
+        // Handle horizontal movement
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             pos.x += speed * Time.deltaTime;
+            moveDirection = PlayerAnimation.AnimationDirection.Right;
+            isMoving = true;
         }
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             pos.x -= speed * Time.deltaTime;
+            moveDirection = PlayerAnimation.AnimationDirection.Left;
+            isMoving = true;
         }
+        
+        // Handle vertical movement (allows diagonal)
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             pos.y += speed * Time.deltaTime;
+            // Only change animation to Up if not moving horizontally
+            if (!isMoving)
+            {
+                moveDirection = PlayerAnimation.AnimationDirection.Up;
+            }
+            isMoving = true;
         }
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             pos.y -= speed * Time.deltaTime;
+            // Only change animation to Down if not moving horizontally
+            if (!isMoving)
+            {
+                moveDirection = PlayerAnimation.AnimationDirection.Down;
+            }
+            isMoving = true;
+        }
+        
+        // Update animator
+        if (animator != null)
+        {
+            if (isMoving)
+            {
+                lastDirection = moveDirection;
+                animator.SetDirectionAndState(moveDirection, PlayerAnimation.AnimationState.Walking);
+            }
+            else
+            {
+                animator.SetDirectionAndState(lastDirection, PlayerAnimation.AnimationState.Idle);
+            }
         }
         
         transform.position = pos;
@@ -105,10 +148,24 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             inputDir.y = -1;
         
-
         if (inputDir == Vector2.zero)
         {
-            inputDir = Vector2.right; // Default dash direction, can change in future
+            // Dash in the direction player is facing
+            switch (lastDirection)
+            {
+                case PlayerAnimation.AnimationDirection.Right:
+                    inputDir = Vector2.right;
+                    break;
+                case PlayerAnimation.AnimationDirection.Left:
+                    inputDir = Vector2.left;
+                    break;
+                case PlayerAnimation.AnimationDirection.Up:
+                    inputDir = Vector2.up;
+                    break;
+                case PlayerAnimation.AnimationDirection.Down:
+                    inputDir = Vector2.down;
+                    break;
+            }
         }
         
         dashDirection = inputDir.normalized;
@@ -163,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
         ghostSprite.sprite = spriteRenderer.sprite;
         ghostSprite.color = ghostColor;
         ghostSprite.sortingLayerName = spriteRenderer.sortingLayerName;
-        ghostSprite.sortingOrder = spriteRenderer.sortingOrder;
+        ghostSprite.sortingOrder = spriteRenderer.sortingOrder - 1;
         
         StartCoroutine(FadeGhost(ghostSprite, ghost));
     }
@@ -183,5 +240,4 @@ public class PlayerMovement : MonoBehaviour
         
         Destroy(ghost);
     }
-    
 }

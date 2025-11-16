@@ -93,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -497,7 +497,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cowboy-Left-Idle(breathe)_0: 2638146274217905284
+      Cowboy-Left-Idle(breathe)_1: 3352671967533108025
+      Cowboy-Left-Idle(breathe)_10: -8493976929416055563
+      Cowboy-Left-Idle(breathe)_11: -3703918593768447691
+      Cowboy-Left-Idle(breathe)_12: 610435260237381438
+      Cowboy-Left-Idle(breathe)_13: -5816878934256423549
+      Cowboy-Left-Idle(breathe)_14: -3543678501426025441
+      Cowboy-Left-Idle(breathe)_2: 3172272700018637293
+      Cowboy-Left-Idle(breathe)_3: -1490148495228301809
+      Cowboy-Left-Idle(breathe)_4: -1502807227320165355
+      Cowboy-Left-Idle(breathe)_5: 8189011327130803010
+      Cowboy-Left-Idle(breathe)_6: -8220562906843364571
+      Cowboy-Left-Idle(breathe)_7: 3393082555220931613
+      Cowboy-Left-Idle(breathe)_8: 8121097451326802169
+      Cowboy-Left-Idle(breathe)_9: 7455124526182450913
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -322,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cowboy-Right-Walk_0: 3956311504763873374
+      Cowboy-Right-Walk_1: -8554639204197440913
+      Cowboy-Right-Walk_2: 1547129750535005385
+      Cowboy-Right-Walk_3: 3434998504097100544
+      Cowboy-Right-Walk_4: -3124995705804821580
+      Cowboy-Right-Walk_5: -1025783484315202870
+      Cowboy-Right-Walk_6: 130352693966186605
+      Cowboy-Right-Walk_7: 5178624455787706861
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
