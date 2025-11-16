@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerAnimation.AnimationDirection lastDirection = PlayerAnimation.AnimationDirection.Down;
     
     public weapon playerWeapon;
+    public PlayerAudioController audioController;
     
     void Start()
     {
@@ -72,10 +73,12 @@ public class PlayerMovement : MonoBehaviour
                 {
                     playerWeapon.Fire();
                     PlayerStats.Instance.UseAmmo();
+                    audioController.PlayGunFire();
                 }
                 else
                 {
                     PlayerStats.Instance.Reload();
+                    audioController.PlayReload();
                     reloadTimeRemaining = reloadCooldown; // Start reload cooldown
                 }
             }
