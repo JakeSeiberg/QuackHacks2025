@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cowboy4_idle without gun_1_0: 3283341523123257543
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

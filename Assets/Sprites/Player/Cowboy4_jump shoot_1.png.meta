@@ -172,7 +172,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cowboy4_jump shoot_1_0: 6562127342811796341
+      Cowboy4_jump shoot_1_1: -6652710213610992058
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,16 +1,13 @@
 using UnityEngine;
-public class bullet : MonoBehaviour
-{
+public class bullet : MonoBehaviour{
     public float damage = 10f;
-
-    private void OnCollisionEnter2D(Collision2D collision)
+private void OnTriggerEnter2D(Collider2D other)
+{
+    Enemy enemy = other.GetComponent<Enemy>();
+    if (enemy != null)
     {
-        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-
-        if (enemy != null)
-            enemy.TakeDamage(damage);
-
-        Destroy(gameObject);
+        enemy.TakeDamage(damage);
+        Destroy(gameObject); 
     }
 }
-
+}

@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cowboy4_walk without gun_3_0: 4761080631839303747
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
