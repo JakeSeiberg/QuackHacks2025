@@ -311,7 +311,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!114 &7613397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,16 +321,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 7613389}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7b8c3b7a48f5460ab06d8c69ff189b4, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f188e2485a7547f0b16bc6440b29c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 70425712}
-  desiredDistance: 6
-  moveSpeed: 3
+  rushSpeed: 3
   strafeSpeed: 2
-  rotateSpeed: 360
-  projectilePrefab: {fileID: 1002025600565954649, guid: a027486837c114a86b527e10a5d7f464, type: 3}
-  shootCooldown: 2
+  minStrafeDistance: 2
+  maxStrafeDistance: 4
+  enterStrafeDistance: 3
 --- !u!1 &70425704
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +370,7 @@ MonoBehaviour:
   currentAmmo: 30
   maxAmmo: 30
   currency: 0
+  inFuture: 0
 --- !u!114 &70425706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14128,7 +14127,7 @@ Transform:
   m_GameObject: {fileID: 1859190751}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.377, y: -0.188, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14146,7 +14145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69caaf94e0f25447fba4ccaa3181fdd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 70425712}
+  firePoint: {fileID: 7613390}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
