@@ -53,6 +53,8 @@ public class MapGenerator : MonoBehaviour
 
     void SetupDungeon()
     {
+        RoomManager.instance.ResetDoors();
+
         for (int i = 0; i < spawnedCells.Count; i++)
             Destroy(spawnedCells[i].gameObject);
 
@@ -191,9 +193,10 @@ public class MapGenerator : MonoBehaviour
         int x = index % 10;
         int y = index / 10;
 
+        // Center around (0, 0) with perfect alignment
         Vector2 position = new Vector2(
-            x * roomWidth + roomWidth / 2f,
-            -y * roomHeight - roomHeight / 2f
+            (x - 4.5f) * roomWidth,
+            -(y - 4.5f) * roomHeight
         );
 
         Cell newCell = Instantiate(cellPrefab, position, Quaternion.identity);
