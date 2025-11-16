@@ -222,7 +222,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cowboy-Right-Shoot_0: 1933169735761290451
+      Cowboy-Right-Shoot_1: -8835334259634619680
+      Cowboy-Right-Shoot_2: 535957020730634531
+      Cowboy-Right-Shoot_3: -643538172979792319
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

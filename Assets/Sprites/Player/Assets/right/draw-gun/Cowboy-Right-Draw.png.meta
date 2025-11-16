@@ -272,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cowboy-Right-Draw_0: -2374705615496331205
+      Cowboy-Right-Draw_1: 7769796197156616772
+      Cowboy-Right-Draw_2: 6118940671862523695
+      Cowboy-Right-Draw_3: -3170098138830607376
+      Cowboy-Right-Draw_4: -5239273715633069383
+      Cowboy-Right-Draw_5: 2177581554549069158
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

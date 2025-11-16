@@ -272,7 +272,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cowboy-Up-Draw-Shadow_0: 965933029308992320
+      Cowboy-Up-Draw-Shadow_1: -6475760209384014182
+      Cowboy-Up-Draw-Shadow_2: 1756906244183268936
+      Cowboy-Up-Draw-Shadow_3: -1816604694088041582
+      Cowboy-Up-Draw-Shadow_4: 1305902400654505668
+      Cowboy-Up-Draw-Shadow_5: 7168740416258879109
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

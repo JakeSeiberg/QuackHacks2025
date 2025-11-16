@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cowboy-Up-Idle(still)-Shadow_0: -6240760683538864774
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

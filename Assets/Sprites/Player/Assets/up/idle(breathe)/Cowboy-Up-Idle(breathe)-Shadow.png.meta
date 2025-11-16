@@ -497,7 +497,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cowboy-Up-Idle(breathe)-Shadow_0: 8147234634805447368
+      Cowboy-Up-Idle(breathe)-Shadow_1: 5194524380159056593
+      Cowboy-Up-Idle(breathe)-Shadow_10: -6616723295076253069
+      Cowboy-Up-Idle(breathe)-Shadow_11: 8509266294589091624
+      Cowboy-Up-Idle(breathe)-Shadow_12: 311376278468812171
+      Cowboy-Up-Idle(breathe)-Shadow_13: 2765266181148826775
+      Cowboy-Up-Idle(breathe)-Shadow_14: -2557941734655536008
+      Cowboy-Up-Idle(breathe)-Shadow_2: -801726273365636953
+      Cowboy-Up-Idle(breathe)-Shadow_3: -4026934251982305398
+      Cowboy-Up-Idle(breathe)-Shadow_4: 5067531568638733654
+      Cowboy-Up-Idle(breathe)-Shadow_5: -7055192527843978512
+      Cowboy-Up-Idle(breathe)-Shadow_6: -4733825897577686387
+      Cowboy-Up-Idle(breathe)-Shadow_7: 6947672467443254244
+      Cowboy-Up-Idle(breathe)-Shadow_8: 8287678021568604176
+      Cowboy-Up-Idle(breathe)-Shadow_9: -2772138463244161605
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

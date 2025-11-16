@@ -322,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Cowboy-Up-Walk-Shadow_0: 5102296808540588131
+      Cowboy-Up-Walk-Shadow_1: 1077763932489245868
+      Cowboy-Up-Walk-Shadow_2: -1599463202642687852
+      Cowboy-Up-Walk-Shadow_3: -6665040181998636723
+      Cowboy-Up-Walk-Shadow_4: 5418468083981445875
+      Cowboy-Up-Walk-Shadow_5: -4293659738689962397
+      Cowboy-Up-Walk-Shadow_6: 2648850808391564510
+      Cowboy-Up-Walk-Shadow_7: -1486678990909082094
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
