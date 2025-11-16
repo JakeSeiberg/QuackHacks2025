@@ -796,6 +796,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 1884397023}
   fireRate: 1
+  player: {fileID: 0}
+  range: 12
 --- !u!114 &406925106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -954,6 +956,7 @@ MonoBehaviour:
   moveSpeed: 3
   strafeSpeed: 2
   rotateSpeed: 360
+  range: 12
   projectilePrefab: {fileID: 1002025600565954649, guid: a027486837c114a86b527e10a5d7f464, type: 3}
   shootCooldown: 2
 --- !u!114 &406925111
@@ -24271,6 +24274,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 1159608164}
   fireRate: 2
+  player: {fileID: 0}
+  range: 12
 --- !u!114 &1991916613
 MonoBehaviour:
   m_ObjectHideFlags: 0
