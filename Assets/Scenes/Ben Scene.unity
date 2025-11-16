@@ -132,8 +132,8 @@ GameObject:
   - component: {fileID: 7613395}
   - component: {fileID: 7613394}
   - component: {fileID: 7613393}
-  - component: {fileID: 7613392}
   - component: {fileID: 7613391}
+  - component: {fileID: 7613397}
   m_Layer: 8
   m_Name: Rusher
   m_TagString: Enemy
@@ -171,23 +171,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 549197556}
   fireRate: 2
---- !u!114 &7613392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7613389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f188e2485a7547f0b16bc6440b29c04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rushSpeed: 3
-  strafeSpeed: 2
-  minStrafeDistance: 2
-  maxStrafeDistance: 4
-  enterStrafeDistance: 3
 --- !u!114 &7613393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,7 +269,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -329,6 +312,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7613397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7613389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b8c3b7a48f5460ab06d8c69ff189b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 70425712}
+  desiredDistance: 6
+  moveSpeed: 3
+  strafeSpeed: 2
+  rotateSpeed: 360
+  projectilePrefab: {fileID: 1002025600565954649, guid: a027486837c114a86b527e10a5d7f464, type: 3}
+  shootCooldown: 2
 --- !u!1 &70425704
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,7 +702,7 @@ Transform:
   m_GameObject: {fileID: 176967757}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.16, y: -0.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10693,8 +10695,8 @@ Transform:
   m_GameObject: {fileID: 549197554}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.586, y: -0.116, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.004, y: -0.284, z: 0}
+  m_LocalScale: {x: 0.7923813, y: 0.38802674, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1859190752}
@@ -11453,9 +11455,10 @@ GameObject:
   - component: {fileID: 1493448714}
   - component: {fileID: 1493448713}
   - component: {fileID: 1493448712}
+  - component: {fileID: 1493448715}
   m_Layer: 7
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13835,6 +13838,26 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1493448715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493448710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 1
+  m_Area: 1
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &1514311729
 GameObject:
   m_ObjectHideFlags: 0
@@ -14088,6 +14111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1859190752}
+  - component: {fileID: 1859190753}
   m_Layer: 0
   m_Name: FirePoint_enemy
   m_TagString: Untagged
@@ -14110,6 +14134,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 549197555}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1859190753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859190751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69caaf94e0f25447fba4ccaa3181fdd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePoint: {fileID: 70425712}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
