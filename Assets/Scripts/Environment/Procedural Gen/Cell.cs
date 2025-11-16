@@ -4,6 +4,7 @@ using UnityEngine;
 public class Cell : MonoBehaviour
 {
     public RoomType roomType;
+    public Vector2 worldPosition;
 
     public enum RoomType
     {

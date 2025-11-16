@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using System.Linq;
+using TMPro;
 
 public class MapGenerator : MonoBehaviour
 {  
@@ -30,6 +32,8 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private Sprite shop;
     [SerializeField] private Sprite boss;
 
+    [SerializeField] private GameObject[] oneByOneRoomPrefabs; // Array of 1x1 room variants
+
     public static MapGenerator instance;
 
     void Start()
@@ -54,7 +58,9 @@ public class MapGenerator : MonoBehaviour
     void SetupDungeon()
     {
         for (int i = 0; i < spawnedCells.Count; i++)
+        {
             Destroy(spawnedCells[i].gameObject);
+        }
 
         spawnedCells.Clear();
 
@@ -81,7 +87,7 @@ public class MapGenerator : MonoBehaviour
             if (index > 20) created |= VisitCell(index - 10);
             if (index < 70) created |= VisitCell(index + 10);
 
-            if (!created)
+            if (created == false)
                 endRooms.Add(index);
         }
         
@@ -102,7 +108,7 @@ public class MapGenerator : MonoBehaviour
     
     void SetupSpecialRooms()
     {
-        BossRoomIndex = endRooms.Count > 0 ? endRooms[endRooms.Count - 1] : -1;
+        BossRoomIndex = endRooms.Count > 0 ? endRooms[endRooms.Count - 1 ] : -1;
         if (BossRoomIndex != -1)
             endRooms.RemoveAt(endRooms.Count - 1);
 
@@ -115,14 +121,42 @@ public class MapGenerator : MonoBehaviour
             return;
         }
 
+        // Change cell visuals
         ChangeSpecialVisuals();
 
+        // Create a map to store spawned rooms
+        Dictionary<int, Room> roomMap = new Dictionary<int, Room>();
+        
+        // Spawn all rooms
         foreach (var cell in spawnedCells)
         {
-            GameObject roomPrefab = RoomManager.instance.oneByOnePrefab.gameObject;
-            GameObject room = Instantiate(roomPrefab, cell.transform.position, Quaternion.identity);
+            GameObject roomGO = Instantiate(
+                RoomManager.instance.oneByOnePrefab.gameObject,
+                cell.transform.position,  // Use cell's transform position
+                Quaternion.identity
+            );
 
-            RoomManager.instance.SetupDoors(room.GetComponent<Room>(), cell);
+            Room roomComp = roomGO.GetComponent<Room>();
+            roomComp.SetupRoom(cell);
+            roomMap[cell.index] = roomComp;
+        }
+
+        // Setup doors for all rooms
+        foreach (var cell in spawnedCells)
+        {
+            Room roomComp = roomMap[cell.index];
+            RoomManager.instance.SetupDoors(roomComp, cell);
+        }
+        
+        // Hide or destroy the cell visual objects (keep the Cell component for reference)
+        foreach (var cell in spawnedCells)
+        {
+            // Option 1: Hide the cell's sprite renderer
+            if (cell.spriteRenderer != null)
+                cell.spriteRenderer.enabled = false;
+            
+            // Option 2: Or completely disable the cell's GameObject visuals
+            // cell.gameObject.SetActive(false);
         }
     }
 
@@ -131,17 +165,17 @@ public class MapGenerator : MonoBehaviour
     {
         foreach (var cell in spawnedCells)
         {
-            if (cell.index == itemRoomIndex)
+            if(cell.index == itemRoomIndex)
             {
                 cell.setSpecialRoomSprite(item);
                 cell.setRoomType(Cell.RoomType.Item);
             }
-            if (cell.index == shopRoomIndex)
+            if(cell.index == shopRoomIndex)
             {
                 cell.setSpecialRoomSprite(shop);
                 cell.setRoomType(Cell.RoomType.Shop);
             }
-            if (cell.index == BossRoomIndex)
+            if(cell.index == BossRoomIndex)
             {
                 cell.setSpecialRoomSprite(boss);
                 cell.setRoomType(Cell.RoomType.Boss);
@@ -151,11 +185,15 @@ public class MapGenerator : MonoBehaviour
     
     int RandomEndRoom()
     {
-        if (endRooms.Count == 0) return -1;
+        if (endRooms.Count == 0)
+        {
+            return -1;
+        }
+        int RandomRoom = Random.Range(0, endRooms.Count);
+        int index = endRooms[RandomRoom];
 
-        int i = Random.Range(0, endRooms.Count);
-        int index = endRooms[i];
-        endRooms.RemoveAt(i);
+        endRooms.RemoveAt(RandomRoom);
+
         return index;
     }
     
@@ -163,26 +201,35 @@ public class MapGenerator : MonoBehaviour
     {
         int count = 0;
 
-        if (index - 10 >= 0 && floorPlan[index - 10] == 1) count++;
-        if (index + 10 < 100 && floorPlan[index + 10] == 1) count++;
-        if (index % 10 != 0 && floorPlan[index - 1] == 1) count++;
-        if (index % 10 != 9 && floorPlan[index + 1] == 1) count++;
-
+        if (floorPlan[index - 10] == 1)
+            count++;
+        if (floorPlan[index - 1] == 1)
+            count++;
+        if (floorPlan[index + 1] == 1)
+            count++;
+        if (floorPlan[index + 10] == 1)
+            count++;
+            
         return count;
     }
     
     private bool VisitCell(int index)
     {
-        if (floorPlan[index] != 0) return false;
-        if (GetNeighborCount(index) > 1) return false;
-        if (floorPlanCount > maxRooms) return false;
-        if (Random.value < 0.5f) return false;
+        if (floorPlan[index] != 0)
+            return false;
+        if (GetNeighborCount(index) > 1)
+            return false;
+        if (floorPlanCount > maxRooms)
+            return false;
+        if (Random.value < 0.5f)
+            return false;
 
         cellQueue.Enqueue(index);
         floorPlan[index] = 1;
         floorPlanCount++;
 
         SpawnRoom(index);
+
         return true;
     }
     
@@ -201,6 +248,7 @@ public class MapGenerator : MonoBehaviour
         newCell.value = 1;
         newCell.index = index;
         newCell.setRoomType(Cell.RoomType.Regular);
+        newCell.worldPosition = position;
 
         spawnedCells.Add(newCell);
         indexToCellMap[index] = newCell;

@@ -9,19 +9,17 @@ public class Door : MonoBehaviour
     {
         direction = dir;
 
-        // Optional: set sprite based on room type combination
-        // You can assign different door sprites in the inspector
         if(spriteRenderer != null)
         {
             switch(dir)
             {
                 case EdgeDirection.Up:
                 case EdgeDirection.Down:
-                    spriteRenderer.color = Color.white; // placeholder
+                    spriteRenderer.color = Color.white;
                     break;
                 case EdgeDirection.Left:
                 case EdgeDirection.Right:
-                    spriteRenderer.color = Color.gray; // placeholder
+                    spriteRenderer.color = Color.gray;
                     break;
             }
         }
