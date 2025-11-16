@@ -33,6 +33,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private Sprite boss;
 
     [SerializeField] private GameObject[] oneByOneRoomPrefabs; // Array of 1x1 room variants
+    
 
     public static MapGenerator instance;
 
@@ -123,42 +124,45 @@ public class MapGenerator : MonoBehaviour
             return;
         }
 
-        // Change cell visuals
         ChangeSpecialVisuals();
 
-        // Create a map to store spawned rooms
         Dictionary<int, Room> roomMap = new Dictionary<int, Room>();
         
-        // Spawn all rooms
         foreach (var cell in spawnedCells)
         {
-            GameObject roomGO = Instantiate(
-                RoomManager.instance.oneByOnePrefab.gameObject,
-                cell.transform.position,  // Use cell's transform position
+            GameObject roomGO;
+            if (cell.roomType == Cell.RoomType.Boss)
+            {
+               roomGO = Instantiate(
+                RoomManager.instance.BossRoomPrefabs.gameObject,
+                cell.transform.position, 
                 Quaternion.identity
-            );
+                ); 
+            }
+            else{
+                roomGO = Instantiate(
+                    RoomManager.instance.oneByOnePrefab.gameObject,
+                    cell.transform.position, 
+                    Quaternion.identity
+                );
+            }
 
             Room roomComp = roomGO.GetComponent<Room>();
             roomComp.SetupRoom(cell);
             roomMap[cell.index] = roomComp;
         }
 
-        // Setup doors for all rooms
         foreach (var cell in spawnedCells)
         {
             Room roomComp = roomMap[cell.index];
             RoomManager.instance.SetupDoors(roomComp, cell);
         }
         
-        // Hide or destroy the cell visual objects (keep the Cell component for reference)
         foreach (var cell in spawnedCells)
         {
-            // Option 1: Hide the cell's sprite renderer
             if (cell.spriteRenderer != null)
                 cell.spriteRenderer.enabled = false;
-            
-            // Option 2: Or completely disable the cell's GameObject visuals
-            // cell.gameObject.SetActive(false);
+
         }
     }
 
@@ -240,7 +244,6 @@ public class MapGenerator : MonoBehaviour
         int x = index % 10;
         int y = index / 10;
 
-        // Center around (0, 0) with perfect alignment
         Vector2 position = new Vector2(
             (x - 4.5f) * roomWidth,
             -(y - 4.5f) * roomHeight

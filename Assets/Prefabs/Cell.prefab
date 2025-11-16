@@ -133,11 +133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe30975787c84267ae7044405b86048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomType: 0
+  worldPosition: {x: 0, y: 0}
   index: 0
   value: 0
   spriteRenderer: {fileID: 2638114169341631076}
-  roomSprite: {fileID: 4028311690065461819}
-  cellList: 
 --- !u!212 &4028311690065461819
 SpriteRenderer:
   m_ObjectHideFlags: 0

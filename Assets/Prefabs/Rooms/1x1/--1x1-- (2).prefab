@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomType: 0
+  gridIndex: 0
 --- !u!1 &1244597039946893096
 GameObject:
   m_ObjectHideFlags: 0

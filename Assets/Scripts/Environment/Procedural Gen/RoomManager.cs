@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class RoomManager : MonoBehaviour
 {
     public Room oneByOnePrefab;
+    public Room BossRoomPrefabs; 
     public Door doorPrefab;
     public static RoomManager instance;
     
