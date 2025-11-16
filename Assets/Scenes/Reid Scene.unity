@@ -728,7 +728,7 @@ MonoBehaviour:
   cellPrefab: {fileID: 3981818999615959195, guid: 7a469c28688da49328fdc534d171040d, type: 3}
   item: {fileID: 21300000, guid: 26648ca6c98704ba5a8ae52ea710c990, type: 3}
   shop: {fileID: 21300000, guid: afd5b43b87c134ac19f5f3acea0b882e, type: 3}
-  boss: {fileID: 21300000, guid: 68ba3074974e641be855bd0df16becf4, type: 3}
+  boss: {fileID: 2347885201555898235, guid: 246652499dbc4450abb4fdff33d83c82, type: 3}
   oneByOneRoomPrefabs: []
 --- !u!4 &598229049
 Transform:
@@ -758,6 +758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oneByOnePrefab: {fileID: 656554883392131826, guid: 59f53f203e3874326addffeeca3ddde0, type: 3}
+  BossRoomPrefabs: {fileID: 1740523171283815339, guid: 7db8d465b62e84643a0e6b9cc79fc062, type: 3}
   doorPrefab: {fileID: 5178153984242614403, guid: b5474e07bf7af47419f105aabf827f46, type: 3}
 --- !u!1 &709811316
 GameObject:

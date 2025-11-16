@@ -8,6 +8,7 @@ TagManager:
   - wall
   - sniper
   - rusher
+  - Portal
   layers:
   - Default
   - TransparentFX
