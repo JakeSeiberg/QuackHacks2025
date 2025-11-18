@@ -15890,8 +15890,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33cbcd80802b34684a85e3fdc7eeafb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
-  currentHealth: 5
+  maxHealth: 40
+  currentHealth: 40
   currentWeaponIndex: 0
   currentAmmo: 6
   maxAmmo: 6
@@ -22013,7 +22013,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

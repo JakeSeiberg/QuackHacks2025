@@ -5,7 +5,8 @@ public class BossFight : MonoBehaviour
     [Header("Boss Settings")]
     public float phaseTime = 6f; 
     public float moveSpeed = 2f;
-    public Transform player;
+    public GameObject player;
+    private Rigidbody2D rb;
 
     [Header("Bullet Settings")]
     public GameObject bulletPrefab;
@@ -19,6 +20,8 @@ public class BossFight : MonoBehaviour
     void Start()
     {
         phaseTimer = phaseTime;
+        rb = GetComponent<Rigidbody2D>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -72,7 +75,7 @@ public class BossFight : MonoBehaviour
     {
         if (!player) return;
 
-        Vector2 dir = (player.position - transform.position).normalized;
+        Vector2 dir = (player.transform.position - transform.position).normalized;
         FireBullet(dir);
     }
 
@@ -94,7 +97,7 @@ public class BossFight : MonoBehaviour
     {
         if (!player) return;
 
-        Vector2 baseDir = (player.position - transform.position).normalized;
+        Vector2 baseDir = (player.transform.position - transform.position).normalized;
         float baseAngle = Mathf.Atan2(baseDir.y, baseDir.x) * Mathf.Rad2Deg;
 
         for (int i = 0; i < count; i++)

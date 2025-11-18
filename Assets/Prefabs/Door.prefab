@@ -165,8 +165,9 @@ MonoBehaviour:
   direction: 2
   originRoomType: 0
   neighborRoomType: 0
-  teleportDistance: 3.26
-  activationRadius: 4
+  teleportDistanceHorizontal: 2
+  teleportDistanceVertical: 2
+  activationRadius: 2
   cooldownTime: 0.5
   playerLayer:
     serializedVersion: 2

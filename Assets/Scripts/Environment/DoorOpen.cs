@@ -19,14 +19,8 @@ public class DoorTeleport : MonoBehaviour
     private Transform playerTransform;
     private static bool isAnyDoorTeleporting = false; // Global lock
     private static DoorTeleport lastUsedDoor = null; // Track last door used
-    
-    [Header("Optional: Visual Feedback")]
-    public GameObject teleportEffect; // Optional particle effect
-    
     private void Update()
     {
-        // Manual distance check instead of relying on triggers
-        // This works even when player collider is disabled during dash
         if (!canTeleport || isAnyDoorTeleporting) return;
         
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -34,7 +28,6 @@ public class DoorTeleport : MonoBehaviour
         
         float distance = Vector3.Distance(transform.position, player.transform.position);
         
-        // Check if player is close enough and hasn't just used this door
         if (distance < activationRadius && lastUsedDoor != this)
         {
             TeleportPlayer(player.transform);
@@ -54,14 +47,6 @@ public class DoorTeleport : MonoBehaviour
         Vector3 teleportOffset = GetSmartTeleportOffset(playerToDoor);
         Vector3 newPosition = transform.position + teleportOffset;
         
-        Debug.Log($"Player at {player.position}, Door at {transform.position}, Direction: {direction}, Offset: {teleportOffset}, New Position: {newPosition}");
-        
-        // Optional: Spawn visual effect
-        if (teleportEffect != null)
-        {
-            Instantiate(teleportEffect, player.position, Quaternion.identity);
-            Instantiate(teleportEffect, newPosition, Quaternion.identity);
-        }
         
         // Stop player dash if they're dashing
         var playerMovement = player.GetComponent<PlayerMovement>();
