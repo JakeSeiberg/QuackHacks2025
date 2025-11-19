@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7329974120716162618}
   - component: {fileID: 1672050826669067733}
   - component: {fileID: 2121647845023361259}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: gun-enemy
   m_TagString: rusher
   m_Icon: {fileID: 0}
@@ -7937,7 +7937,7 @@ GameObject:
   - component: {fileID: 1745554183924320039}
   - component: {fileID: 8331715434381367689}
   - component: {fileID: 15899535693970196}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: gun-sniper
   m_TagString: sniper
   m_Icon: {fileID: 0}
@@ -8404,7 +8404,7 @@ GameObject:
   - component: {fileID: 7758446488153479041}
   - component: {fileID: 5390368668922186509}
   - component: {fileID: 23424292224305169}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: gun-enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
