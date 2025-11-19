@@ -8,11 +8,7 @@ TagManager:
   - wall
   - sniper
   - rusher
-<<<<<<< HEAD
-  - bigGun
-=======
   - Portal
->>>>>>> fb96b475572beb5af79e7622abcfd427b35d9eb2
   layers:
   - Default
   - TransparentFX
