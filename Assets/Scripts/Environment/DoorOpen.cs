@@ -84,11 +84,15 @@ public class DoorTeleport : MonoBehaviour
                 if (playerToDoor.y > 0)
                 {
                     // Player is below, teleport them up
+                    PlayerStats.Instance.currentRoomID -= 10;
+
                     return new Vector3(0, teleportDistanceVertical, 0);
+
                 }
                 else
                 {
                     // Player is above, teleport them down
+                    PlayerStats.Instance.currentRoomID += 10;
                     return new Vector3(0, -teleportDistanceVertical, 0);
                 }
                 
@@ -99,11 +103,14 @@ public class DoorTeleport : MonoBehaviour
                 if (playerToDoor.x > 0)
                 {
                     // Player is on the left, teleport them right
+                    PlayerStats.Instance.currentRoomID += 1;
                     return new Vector3(teleportDistanceHorizontal, 0, 0);
+
                 }
                 else
                 {
                     // Player is on the right, teleport them left
+                    PlayerStats.Instance.currentRoomID -= 1;
                     return new Vector3(-teleportDistanceHorizontal, 0, 0);
                 }
                 
@@ -119,11 +126,15 @@ public class DoorTeleport : MonoBehaviour
         {
             case EdgeDirection2.Up:
                 return new Vector3(0, teleportDistanceVertical, 0);
+
             case EdgeDirection2.Down:
+                PlayerStats.Instance.currentRoomID += 10;
                 return new Vector3(0, -teleportDistanceVertical, 0);
             case EdgeDirection2.Left:
+                PlayerStats.Instance.currentRoomID -= 1;
                 return new Vector3(-teleportDistanceHorizontal, 0, 0);
             case EdgeDirection2.Right:
+                PlayerStats.Instance.currentRoomID += 1;
                 return new Vector3(teleportDistanceHorizontal, 0, 0);
             default:
                 return Vector3.zero;
@@ -185,9 +196,11 @@ public class DoorTeleport : MonoBehaviour
                 break;
             case EdgeDirection2.Down:
                 transform.rotation = Quaternion.Euler(0, 0, 180);
+
                 break;
             case EdgeDirection2.Left:
                 transform.rotation = Quaternion.Euler(0, 0, 90);
+
                 break;
             case EdgeDirection2.Right:
                 transform.rotation = Quaternion.Euler(0, 0, -90);

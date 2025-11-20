@@ -19,6 +19,7 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Position")]
     public bool inFuture = false;
+    public int currentRoomID = 45;
     
     void Awake()
     {

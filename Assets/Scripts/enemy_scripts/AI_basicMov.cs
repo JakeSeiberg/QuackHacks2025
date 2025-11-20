@@ -10,11 +10,15 @@ public class AI_basicMovement : MonoBehaviour
     public float enterStrafeDistance = 3f;  // Start strafing at this distance
 
     private Transform player;
+    private PlayerStats playerScript;
+    private GameObject playerObject;
     private bool isStrafing = false;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        player = playerObject.transform;
+        playerScript = playerObject.GetComponent<PlayerStats>();
         
         if (player == null)
         {
@@ -24,6 +28,14 @@ public class AI_basicMovement : MonoBehaviour
 
     void Update()
     {
+        Room parentScript = GetComponentInParent<Room>();
+        int RoomID = parentScript.gridIndex;
+        if ((playerScript.currentRoomID) != RoomID){
+            Debug.Log(playerScript.currentRoomID);
+            return;
+        }
+
+
         if (player == null) return;
 
         Vector2 toPlayer = player.position - transform.position;
