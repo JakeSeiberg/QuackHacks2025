@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer;
+    public SpriteRenderer spriteRenderer; 
     public EdgeDirection3 direction;
 
     public void SetDoorType(Cell.RoomType fromRoomType, Cell.RoomType toRoomType, EdgeDirection3 dir)

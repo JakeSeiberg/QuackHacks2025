@@ -85,6 +85,10 @@ public class RoomManager : MonoBehaviour
 
         Vector3 doorWorldPosition = GetDoorWorldPosition(originCell, neighborIndex, dir);
 
+        if (Random.Range(-10.0f, 10.0f) > 0f) {
+            doorWorldPosition += new Vector3(245,0,0);
+        }
+
         Door door = Instantiate(doorPrefab, doorWorldPosition, Quaternion.identity);
         
         spawnedDoors.Add(door);

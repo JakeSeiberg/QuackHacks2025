@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 7667461475788409820}
+  futureDoor: {fileID: 0}
   direction: 0
 --- !u!61 &8512076338743990219
 BoxCollider2D:
@@ -172,4 +173,3 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  teleportEffect: {fileID: 0}
