@@ -613,6 +613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oneByOnePrefab: {fileID: 656554883392131826, guid: 59f53f203e3874326addffeeca3ddde0, type: 3}
   BossRoomPrefabs: {fileID: 1740523171283815339, guid: 7db8d465b62e84643a0e6b9cc79fc062, type: 3}
+  SpawnRoomPrefabs: {fileID: 749793682462752552, guid: 78ed20338b950457cb7504a20c03b482, type: 3}
   doorPrefab: {fileID: 5178153984242614403, guid: b5474e07bf7af47419f105aabf827f46, type: 3}
 --- !u!1 &709811316
 GameObject:
@@ -15707,7 +15708,7 @@ Transform:
   m_GameObject: {fileID: 1281104107}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: 2.45, z: 1}
+  m_LocalPosition: {x: 2, y: 5, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15897,6 +15898,7 @@ MonoBehaviour:
   maxAmmo: 6
   currency: 0
   inFuture: 0
+  currentRoomID: 45
 --- !u!114 &1281104114
 MonoBehaviour:
   m_ObjectHideFlags: 0
