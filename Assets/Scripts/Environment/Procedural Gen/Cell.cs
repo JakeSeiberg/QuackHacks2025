@@ -16,6 +16,7 @@ public class Cell : MonoBehaviour
 
     public int index;
     public int value;
+    public int roomNum;
 
     public SpriteRenderer spriteRenderer;
 

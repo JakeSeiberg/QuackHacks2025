@@ -23,7 +23,6 @@ public class MapGenerator : MonoBehaviour
     private int itemRoomIndex;
 
     public Cell cellPrefab;
-    private float cellSize;
     private Queue<int> cellQueue;
     private List<Cell> spawnedCells;
     private Dictionary<int, Cell> indexToCellMap;
@@ -33,6 +32,7 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private Sprite shop;
     [SerializeField] private Sprite boss;
     [SerializeField] private NavMeshSurface navMeshSurface;
+    [SerializeField] private int nextRoomID;
 
     [SerializeField] private GameObject[] oneByOneRoomPrefabs; // Array of 1x1 room variants
     
@@ -44,8 +44,8 @@ public class MapGenerator : MonoBehaviour
         instance = this;
         minRooms = 5;
         maxRooms = 7;
-        cellSize = 20f;
         spawnedCells = new();
+        nextRoomID = 0;
 
         SetupDungeon();
     }
@@ -262,6 +262,7 @@ public class MapGenerator : MonoBehaviour
 
         newCell.value = 1;
         newCell.index = index;
+        newCell.roomNum = nextRoomID++;
         newCell.setRoomType(Cell.RoomType.Regular);
         newCell.worldPosition = position;
 
