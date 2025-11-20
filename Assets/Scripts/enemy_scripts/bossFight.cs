@@ -16,11 +16,14 @@ public class BossFight : MonoBehaviour
 
     private int currentPhase = 0;
     private float phaseTimer;
+    private Enemy _enemyScript; 
+
 
     void Start()
     {
         phaseTimer = phaseTime;
         rb = GetComponent<Rigidbody2D>();
+        
         player = GameObject.FindGameObjectWithTag("Player");
     }
 

@@ -21,6 +21,7 @@ public class MapGenerator : MonoBehaviour
     private int BossRoomIndex;
     private int shopRoomIndex;
     private int itemRoomIndex;
+    private int spawnRoomIndex;
 
     public Cell cellPrefab;
     private Queue<int> cellQueue;
@@ -52,7 +53,7 @@ public class MapGenerator : MonoBehaviour
     {
     }
 
-    void SetupDungeon()
+    public void SetupDungeon()
     {
         RoomManager.instance.ResetDoors();
 
@@ -118,8 +119,9 @@ public class MapGenerator : MonoBehaviour
 
         itemRoomIndex = RandomEndRoom();
         shopRoomIndex = RandomEndRoom();
+        spawnRoomIndex = 45;
 
-        if (itemRoomIndex == -1 || shopRoomIndex == -1 || BossRoomIndex == -1)
+        if (itemRoomIndex == -1 || shopRoomIndex == -1 || BossRoomIndex == -1 || spawnRoomIndex == -1)
         {
             SetupDungeon();
             return;
@@ -142,6 +144,14 @@ public class MapGenerator : MonoBehaviour
 
                 roomGO = Instantiate(
                     RoomManager.instance.BossRoomPrefabs.gameObject,
+                    roomPosition,  // Changed from cell.transform.position
+                    Quaternion.identity
+                    ); 
+            }
+            else if (cell.roomType == Cell.RoomType.Spawn)
+            {
+                roomGO = Instantiate(
+                    RoomManager.instance.SpawnRoomPrefabs.gameObject,
                     roomPosition,  // Changed from cell.transform.position
                     Quaternion.identity
                     ); 
@@ -192,6 +202,11 @@ public class MapGenerator : MonoBehaviour
             {
                 cell.setSpecialRoomSprite(boss);
                 cell.setRoomType(Cell.RoomType.Boss);
+            }
+            if(cell.index == spawnRoomIndex)
+            {
+                cell.setSpecialRoomSprite(boss);
+                cell.setRoomType(Cell.RoomType.Spawn);
             }
         }
     }

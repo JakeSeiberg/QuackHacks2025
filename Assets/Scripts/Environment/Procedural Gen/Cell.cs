@@ -11,7 +11,8 @@ public class Cell : MonoBehaviour
         Regular,
         Item,
         Shop,
-        Boss
+        Boss,
+        Spawn
     }
 
     public int index;

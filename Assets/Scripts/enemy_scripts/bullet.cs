@@ -1,23 +1,25 @@
 using UnityEngine;
 
+
+
 public class bullet : MonoBehaviour{
     public float damage = 10f;
-private void OnTriggerEnter2D(Collider2D other)
-{
-    Enemy enemy = other.GetComponent<Enemy>();
-
-    if (enemy != null)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        enemy.TakeDamage(damage);
-        Debug.Log("hit");
-        Destroy(gameObject); 
+        Enemy enemy = other.GetComponent<Enemy>();
+
+        if (enemy != null)
+        {
+            enemy.TakeDamage(damage);
+            Debug.Log("hit");
+            Destroy(gameObject); 
+        }
+
+        if (other.CompareTag("wall"))
+        {
+            Destroy(gameObject);
+        }
+
+
     }
-
-    if (other.CompareTag("wall"))
-    {
-        Destroy(gameObject);
-    }
-
-
-}
 }
