@@ -24,7 +24,7 @@ public class weapon : MonoBehaviour
     {
         GameObject gun = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Rigidbody2D rb = gun.GetComponent<Rigidbody2D>();
-        if (gameObject.CompareTag("sniper")){
+        if (gun.CompareTag("sniper")){
 
             rb.linearVelocity = (firePoint.up * 13);
         }

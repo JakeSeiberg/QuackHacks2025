@@ -394,6 +394,39 @@ MonoBehaviour:
   explosionBulletCount: 16
   bulletSpeed: 8
   detonationDamage: 30
+  detonationSprites:
+  - {fileID: -6959902353435940329, guid: b5bbeba348efc468e9457e993c760ba0, type: 3}
+  - {fileID: -6193874243426442695, guid: b5bbeba348efc468e9457e993c760ba0, type: 3}
+  - {fileID: 8478947062200175920, guid: b5bbeba348efc468e9457e993c760ba0, type: 3}
+  - {fileID: -1388252221814992612, guid: b5bbeba348efc468e9457e993c760ba0, type: 3}
+  - {fileID: 7995664915873652040, guid: b5bbeba348efc468e9457e993c760ba0, type: 3}
+  spriteChangeDelay: 0.1
+  scaleUpDuringDetonation: 1
+  finalScale: 2
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3097099
+      value: 1.0757111
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2374197320846482384
 GameObject:
   m_ObjectHideFlags: 0

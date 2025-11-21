@@ -15,7 +15,14 @@ public class bomberScript : MonoBehaviour
     public GameObject bulletPrefab;        // Bullet prefab for explosion
     public int explosionBulletCount = 16;  // Number of bullets in radial burst
     public float bulletSpeed = 8f;         // Speed of explosion bullets
-    public float detonationDamage = 30f;   // Direct damage to player if very close
+    public float detonationDamage = 30f; 
+    
+    [Header("Detonation Animation")]
+    public Sprite[] detonationSprites;     // Array of 5 sprites for animation
+    public float spriteChangeDelay = 0.1f;
+    public bool scaleUpDuringDetonation = true; // Enable size increase
+    public float finalScale = 2f;          // Final size multiplier (2 = double size)
+    public AnimationCurve scaleCurve = AnimationCurve.EaseInOut(0, 1, 1, 1);
     
     private Transform player;
     private PlayerStats playerScript;
@@ -24,6 +31,8 @@ public class bomberScript : MonoBehaviour
     private bool hasDetonated = false;
     
     private Enemy healthComponent;
+    private SpriteRenderer spriteRenderer;
+    private Vector3 initialScale;
     private float lastHealth;
 
     void Start()
@@ -33,6 +42,8 @@ public class bomberScript : MonoBehaviour
         playerScript = playerObject.GetComponent<PlayerStats>();
         
         healthComponent = GetComponent<Enemy>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        initialScale = transform.localScale;
         
         if (player == null)
         {
@@ -111,14 +122,52 @@ public class bomberScript : MonoBehaviour
         hasDetonated = true;
 
         Debug.Log($"{gameObject.name} detonating!");
-        ShootRadial(explosionBulletCount);
+        StartCoroutine(DetonationSequence());
+    }
+    IEnumerator DetonationSequence()
+    {
+        // Stop all movement
+        enabled = false;
+        
+        float totalAnimTime = 0f;
+        int spriteCount = (detonationSprites != null && detonationSprites.Length > 0) ? detonationSprites.Length : 1;
+        float animationDuration = spriteChangeDelay * spriteCount;
+        
+        // Play through all detonation sprites with scaling
+        if (detonationSprites != null && detonationSprites.Length > 0 && spriteRenderer != null)
+        {
+            for (int i = 0; i < detonationSprites.Length; i++)
+            {
+                spriteRenderer.sprite = detonationSprites[i];
+                
+                // Calculate scale based on progress through animation
+                if (scaleUpDuringDetonation)
+                {
+                    float progress = (float)i / (detonationSprites.Length - 1);
+                    float scaleMultiplier = Mathf.Lerp(1f, finalScale, scaleCurve.Evaluate(progress));
+                    transform.localScale = initialScale * scaleMultiplier;
+                }
+                
+                yield return new WaitForSeconds(spriteChangeDelay);
+                totalAnimTime += spriteChangeDelay;
+            }
+        }
+        
+
+        // Fire radial burst of bullets
+        //ShootRadial(explosionBulletCount);
+
+        // Deal direct damage to player if very close (inside detonation range)
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         if (distanceToPlayer <= detonationRange && playerScript != null)
         {
             playerScript.TakeDamage((int)detonationDamage);
         }
+
+        // Destroy this enemy
         Destroy(gameObject);
     }
+    /*
     void ShootRadial(int bulletCount)
     {
         for (int i = 0; i < bulletCount; i++)
@@ -144,5 +193,6 @@ public class bomberScript : MonoBehaviour
             rb.linearVelocity = direction * bulletSpeed;
         }
     }
+    */
 
 }
