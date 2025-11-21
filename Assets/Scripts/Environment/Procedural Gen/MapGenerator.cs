@@ -140,7 +140,7 @@ public class MapGenerator : MonoBehaviour
             
             if (cell.roomType == Cell.RoomType.Boss)
             {
-                roomPosition += new Vector3(-5.95f, 8.2f, 0f);
+                //roomPosition += new Vector3(-5.95f, 8.2f, 0f);
 
                 roomGO = Instantiate(
                     RoomManager.instance.BossRoomPrefabs.gameObject,
