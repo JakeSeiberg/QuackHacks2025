@@ -48,8 +48,11 @@ public class AI_basicMovement : MonoBehaviour
         {
 
             if (distance <= rushRange){
-            // ---- RUSH MODE ----
-            transform.position += (Vector3)(direction * rushSpeed * Time.deltaTime);
+            Vector2 perpendicular = new Vector2(-direction.y, direction.x);
+            float wiggle = Mathf.Sin(Time.time * 5f) * 0.3f;
+            Vector2 movement = direction + perpendicular * wiggle;
+            transform.position += (Vector3)(movement.normalized * rushSpeed * Time.deltaTime);
+
           }
 
             // Enter strafe mode when in range

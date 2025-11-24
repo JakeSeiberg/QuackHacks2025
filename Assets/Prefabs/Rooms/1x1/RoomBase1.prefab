@@ -10274,7 +10274,6 @@ GameObject:
   - component: {fileID: 5945193033876611820}
   - component: {fileID: 4020508560356143553}
   - component: {fileID: 3648743416598525108}
-  - component: {fileID: 6664886805262922379}
   - component: {fileID: 1937604717935150341}
   m_Layer: 8
   m_Name: Sniper
@@ -10457,22 +10456,6 @@ MonoBehaviour:
   fireRate: 1
   player: {fileID: 0}
   range: 12
---- !u!114 &6664886805262922379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6998053945120966671}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f188e2485a7547f0b16bc6440b29c04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rushSpeed: 3
-  strafeSpeed: 2
-  maxStrafeDistance: 4
-  enterStrafeDistance: 3
 --- !u!114 &1937604717935150341
 MonoBehaviour:
   m_ObjectHideFlags: 0

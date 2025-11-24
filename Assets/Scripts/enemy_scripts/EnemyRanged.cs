@@ -11,7 +11,16 @@ public class EnemyRanged : MonoBehaviour
     public float range = 12f;    
 
     public GameObject projectilePrefab;
-    public float shootCooldown = 2f;       
+    public float shootCooldown = 2f; 
+    void Start()
+        {
+            GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+            if (playerObj != null)
+            {
+                player = playerObj.transform;
+            }
+        }
+       
 
     void Update()
     {

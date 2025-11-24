@@ -22,16 +22,22 @@ public class weapon : MonoBehaviour
 
     public void enemyFire()
     {
-        GameObject gun = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject gun = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         Rigidbody2D rb = gun.GetComponent<Rigidbody2D>();
-        if (gun.CompareTag("sniper")){
-
-            rb.linearVelocity = (firePoint.up * 13);
+        
+        // Find the player and shoot directly at them
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+        {
+            Vector2 direction = (playerObj.transform.position - firePoint.position).normalized;
+            
+            if (gun.CompareTag("sniper")){
+                rb.linearVelocity = direction * 13;
+            }
+            else{
+                rb.linearVelocity = direction * fireForce;
+            }
         }
-        else{
-            rb.linearVelocity = -(firePoint.up * fireForce);
-        }
-
     }
 
 
